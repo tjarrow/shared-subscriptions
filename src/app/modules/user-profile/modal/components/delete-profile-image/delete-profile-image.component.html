@@ -1,0 +1,19 @@
+<div class="alert alert--error" *ngIf="avatarSetError$ | async as avatarSetError">
+  <div class="alert__icon">
+    <svg-icon name="attention"></svg-icon>
+  </div>
+  <p class="alert__text">
+    <ng-container *ngIf="avatarSetError.error && avatarSetError.error.message">
+      <ng-container *ngIf="avatarSetError.error.message | isArray; else message">
+        <span *ngFor="let p of avatarSetError.error.message">{{p}}</span>
+      </ng-container>
+      <ng-template #message>{{avatarSetError.error.message}}</ng-template>
+    </ng-container>
+  </p>
+</div>
+
+<p class="modal__text">Are you sure you want to delete the profile image?</p>
+<div class="modal__wrapper modal__wrapper--two-buttons">
+  <button class="button button--red button--half" [ngClass]="{'button--loading': isLoading$ | async}" (click)="handleDelete()">Delete</button>
+  <button class="button button--outline-black button--half" (click)="handleClose()">Close</button>
+</div>

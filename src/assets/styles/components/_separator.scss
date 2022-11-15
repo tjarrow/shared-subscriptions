@@ -1,0 +1,27 @@
+.separator {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: center;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #9A9EA0;
+    content: '';
+  }
+
+  &__text {//.separator__text
+    display: inline;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 12px;
+    background-color: #fff;
+    color: #4F555A;
+  }
+}

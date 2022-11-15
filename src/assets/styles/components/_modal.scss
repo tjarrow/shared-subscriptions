@@ -1,0 +1,223 @@
+.modal {
+  width: 408px;
+  background-color: #fff;
+  box-shadow: 0px 3px 24px rgba(0, 0, 0, .3);
+  border-radius: 20px 20px 12px 12px;
+  opacity: 0;
+  transform-origin: top center;
+  transform: perspective(600px) translateY(500px) rotateX(-45deg) scale(.6);
+  margin: auto;
+
+  &_sm {
+    width: 408px;
+  }
+
+  &_md {
+    width: 748px;
+  }
+
+  &--successfully-placed { // .modal--successfully-placed
+    color: #59595C
+  }
+
+  &--cancel-subscription { // .modal--cancel-subscription
+    text-align: center;
+  }
+
+  &--delete-profile-image { // .modal--delete-profile-image
+    text-align: center;
+  }
+
+  &--chat { // .modal--chat
+    width: 353px;
+    opacity: 1;
+    transform: none;
+    margin: 0;
+  }
+
+  &__header {
+    background-color: $color-black;
+    border-radius: 12px 12px 0 0;
+    padding: 16px 50px;
+    position: relative;
+
+    .modal--chat & {
+      padding-left: 28px;
+    }
+  }
+
+  &__title { // .modal_title
+    margin-bottom: 0;
+    font-size: 22px;
+    line-height: 38px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: #fff;
+
+    @include respond-to(md) {
+      font-size: 24px;
+    }
+
+    .modal--chat & {
+      font-size: 18px;
+      font-weight: 500;
+      text-align: left;
+      letter-spacing: 0;
+
+      @include respond-to(md) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__closer { // .modal__closer
+    position: absolute;
+    top: 17px;
+    right: 14px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    background-color: $color-transparent;
+    border-width: 0;
+    color: #9A9DA0;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: lighten(#9A9DA0, 15%);
+    }
+  }
+
+  &__body {
+    padding: 30px 20px 16px;
+
+    .modal--successfully-placed & {
+      padding-top: 49px;
+      text-align: center;
+    }
+
+    .modal--cancel-subscription & {
+      padding-top: 25px;
+      padding-bottom: 40px;
+    }
+
+    .modal--delete-profile-image &,
+    .modal--change-password &,
+    .modal--edit-user-information &  {
+      padding-top: 35px;
+      padding-bottom: 37px;
+    }
+  }
+
+  &__wrapper { // .modal__wrapper
+    &--remember { // .modal__wrapper--remember
+      margin-bottom: 26px;
+      padding-top: 4px;
+      padding-right: 13px;
+      text-align: center;
+    }
+
+    .modal--successfully-placed & {
+      margin-bottom: 50px;
+    }
+
+    &--two-buttons { // .modal__wrapper--two-buttons
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    &--pt {
+      padding-top: 34px;
+    }
+  }
+
+  &__text { // .modal__text
+    margin-bottom: 28px;
+    font-size: 18px;
+    line-height: 1.45;
+    font-weight: 500;
+    text-align: center;
+    transition: opacity .2s ease;
+
+    &--forgot-password { // .modal__text--forgot-password
+      text-align: center;
+    }
+
+    &--disabled {
+      opacity: 0.6;
+    }
+
+    .modal--successfully-placed & {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 500;
+
+      @include respond-to(md) {
+        margin-bottom: 6px;
+        font-size: 18px;
+      }
+    }
+
+    .modal--cancel-subscription &,
+    .modal--delete-profile-image & {
+      margin-bottom: 27px;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    &--big { // .modal__text--big
+      margin-bottom: 6px;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: 500;
+
+      @include respond-to(md) {
+        font-size: 32px;
+      }
+    }
+
+    &--red {
+      color: $color-red;
+    }
+  }
+
+  &__link { // .modal__link
+    color: $color-blue;
+    text-decoration: underline;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    &--loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+
+  &__icon { // .modal__icon
+    margin-top: 10px;
+    margin-bottom: 9px;
+  }
+
+  &__successfully-placed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: #22A199;
+    box-shadow: 0 0 0 10px #D3ECEB;
+    color: #fff;
+  }
+}

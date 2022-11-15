@@ -1,0 +1,49 @@
+.term {
+  &__title { // .term__title
+    margin-bottom: 17px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+
+    @include respond-to(md) {
+      font-size: 21px;
+    }
+  }
+
+  &__text { // .term__text
+    margin-bottom: 17px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  &__text-bold { // .term__text-bold
+    margin-bottom: 17px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  &__link { // .term__link
+    color: $color-blue;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-blue;
+      text-decoration: underline;
+    }
+  }
+
+  &__table { // .term__table
+    margin-bottom: 17px;
+    border-collapse: collapse;
+    background-color: rgba(#fff, 0);
+  }
+
+  &__table-cell {  // .term__table-cell
+    padding: 6px 24px 6px 0;
+  }
+
+  &__list { // .term__list
+    margin-bottom: 17px;
+  }
+}

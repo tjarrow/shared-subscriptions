@@ -1,0 +1,91 @@
+@import 'styles/vars/base';
+
+.input-control {
+  margin-bottom: 8px;
+  padding-bottom: 20px;
+
+  &__wrapper { // .input-control__wrapper
+    position: relative;
+  }
+
+  &__input { // .input-control__input
+    display: block;
+    width: 100%;
+    padding: 27px 15px 9px;
+    background-color: $color-light-gray;
+    border: 1px solid #707578;
+    border-width: 0 0 1px 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s, color .2s;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: rgba(#707578, 0);
+      color: #707578;
+    }
+
+    .input-control--error & {
+      background-color: #FEF6F6;
+      border-color: $color-red;
+    }
+
+    &::-webkit-contacts-auto-fill-button,
+    &::-webkit-credentials-auto-fill-button {
+      visibility: hidden;
+      display: none !important;
+      pointer-events: none;
+      height: 0;
+      width: 0;
+      margin: 0;
+    }
+  }
+
+  &__label { // .input-control__label
+    position: absolute;
+    top: 21px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-black;
+    white-space: nowrap;
+    transition: transform .2s, font-size .2s, color .2s, opacity .2s;
+    pointer-events: none;
+
+    &--active,
+    .input-control__input:focus + & {
+      font-size: 12px;
+      color: $color-blue;
+      transform: translate(-2px, -12px);
+    }
+
+    .input-control__input:disabled + & {
+      opacity: .7;
+    }
+
+    .input-control--error & {
+      color: $color-red;
+    }
+  }
+
+  &__message { // .input-control__message
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    padding-left: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-black;
+
+    .input-control--error & {
+      color: $color-red;
+    }
+  }
+}

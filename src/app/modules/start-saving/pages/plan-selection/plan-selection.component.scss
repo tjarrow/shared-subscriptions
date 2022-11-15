@@ -1,0 +1,22 @@
+.plan-selection {
+  position: relative;
+  min-height: 437px;
+  margin-bottom: 40px;
+  transition: min-height .2s;
+
+  &--sm {
+    min-height: 320px;
+  }
+
+  &--hidden {
+    min-height: 0;
+  }
+}
+
+.section__note {
+  text-align: center;
+}
+
+.note__underline {
+  text-decoration: underline;
+}

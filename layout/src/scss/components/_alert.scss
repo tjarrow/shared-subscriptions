@@ -1,0 +1,47 @@
+.alert {
+  display: flex;
+  align-items: center;
+  padding: 17px 20px;
+
+  &--no-icon { // .alert--no-icon
+    padding: 21px 20px;
+
+    @include respond-to(md) {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__icon { // .alert__icon
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    margin-right: 16px;
+  }
+
+  &__text { // .alert__text
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+
+    .alert--no-icon & {
+      font-size: 16px;
+      line-height: 1.45;
+
+      @include respond-to(md) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &--success { // .alert--success
+    background-color: #CEEAE9;
+    color: #22A199;
+  }
+
+  &--error { // .alert--error
+    background-color: #FCE9EA;
+    color: $color-red;
+  }
+}

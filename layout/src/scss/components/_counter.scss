@@ -1,0 +1,53 @@
+.counter { // .counter
+  margin-bottom: 0;
+  font-weight: 700;
+  text-align: left;
+
+  &__number { // .counter__number
+    display: inline-block;
+    font-size: 35px;
+
+    .counter--plan-card & {
+      font-size: 31px;
+    }
+
+    .counter--small & {
+      font-size: 28px;
+    }
+  }
+
+  &__separator { // .counter__separator
+    display: inline-block;
+    font-size: 21px;
+    color: #8A8E91;
+    transform: translate(-4px, 2px);
+
+    .counter--small & {
+      font-size: 18px;
+    }
+  }
+
+  &__total { // .counter__total
+    display: inline-block;
+    font-size: 21px;
+    line-height: 0.85;
+    color: #8A8E91;
+    transform: translate(-8px, 3px);
+
+    .counter--small & {
+      font-size: 18px;
+    }
+  }
+
+  &__total-words { // .counter__total-words
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 12px;
+    line-height: 11px;
+
+    &--small { // .counter__total-words--small
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
+}

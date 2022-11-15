@@ -1,0 +1,27 @@
+<main class="page page--profile">
+  <section class="section section--profile">
+    <div class="container user-profile__container">
+      <h1 class="page__header">
+        Your Profile
+        <button class="button button--outline-black button--profile-header" (click)="handleSignOut()">Sign Out</button>
+      </h1>
+
+      <ul #tabs class="tabs" [ngClass]="{'tabs--active--1': activeTab === 0 && isTabReadyForTransition, 'tabs--active--2': activeTab === 1 && isTabReadyForTransition}">
+        <li class="tabs__item">
+          <a routerLink="/user-profile" class="tabs__link" routerLinkActive="tabs__link--active" [routerLinkActiveOptions]="{exact: true}" title="">Personal Information</a>
+        </li>
+        <li class="tabs__item">
+          <a routerLink="/user-profile/payment-method" class="tabs__link" routerLinkActive="tabs__link--active" title="">Payment History</a>
+        </li>
+        <li class="tabs__active-underline" [ngClass]="{'tabs__active-underline--shown': isTabMeasured}"
+        [ngStyle]="{'left.px': leftPosition, 'right.px': rightPosition}"></li>
+      </ul>
+
+      <router-outlet></router-outlet>
+      <!-- <div [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </div> -->
+
+    </div>
+  </section>
+</main>

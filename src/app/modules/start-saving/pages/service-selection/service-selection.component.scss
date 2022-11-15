@@ -1,0 +1,17 @@
+@import 'styles/vars/base';
+
+@import './scss-blocks/market-service';
+
+:host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section__note {
+  text-align: center;
+}
+
+.service-selection {
+  flex-grow: 1;
+}

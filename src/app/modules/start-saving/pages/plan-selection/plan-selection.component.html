@@ -1,0 +1,58 @@
+
+  <section class="section section--market">
+    <div class="container">
+      <ng-container *ngIf="currentRole === userRole.share; else subscribe">
+        <h1 class="page__header page__header--market">
+          <span class="return-link">
+            <a [routerLink]="['/market', currentRole]" class="return-link__link" title="">
+              <svg-icon name="round-left"></svg-icon>
+            </a>
+            Which plan would you like to <span class="text-red">share</span>?
+          </span>
+        </h1>
+
+        <div class="plan-selection">
+          <app-spinner [isShown]="(isLoading$ | async)" [isAbsolute]="true"></app-spinner>
+
+          <ul class="row row--market3" *ngIf="plans && plans.length" [@inOutAnimation]>
+            <li class="col col--market3" *ngFor="let plan of plans">
+              <a [routerLink]="[plan.name | lowercase]" app-service-plan [serviceName]="currentService" [plan]="plan" title=""></a>
+            </li>
+          </ul>
+          <section *ngIf="!(isLoading$ | async) && currentRole === userRole.share" class="section section__note">
+            <div class="container">
+              <p class="section__description"><span class="note__underline">note</span>: what you're currently paying</p>
+            </div>
+          </section>
+        </div>
+      </ng-container>
+
+      <ng-template #subscribe>
+        <h1 class="page__header page__header--market">
+          <span class="return-link">
+            <a [routerLink]="['/market', currentRole]" class="return-link__link" title="">
+              <svg-icon name="round-left"></svg-icon>
+            </a>
+            Select your preferred plan
+          </span>
+        </h1>
+        <div class="section__wrapper section__wrapper--market" [ngClass]="{'section__wrapper--hidden': (offersLoadedSuccess$ | async) && !(offers && offers.length)}">
+          <img src="{{getServiceImg()}}" height="60" alt="" class="section__image">
+        </div>
+        <section class="plan-selection plan-selection--sm" [ngClass]="{'plan-selection--hidden': (offersLoadedSuccess$ | async) && !(offers && offers.length)}">
+          <app-spinner [isShown]="(isOffersLoading$ | async)" [isAbsolute]="true"></app-spinner>
+          <div class="row row--market6" *ngIf="offers && offers.length">
+            <div class="col col--market6" *ngFor="let offer of offers">
+              <app-offer [offer]="offer" [serviceName]="currentService"></app-offer>
+            </div>
+          </div>
+        </section>
+      </ng-template>
+    </div>
+  </section>
+
+<app-nothing-found *ngIf="(offersLoadedSuccess$ | async) && !(offers && offers.length) && currentRole !== userRole.share"
+    title="Sorry! All groups are full."
+    description="Do you want to get an email notification when free groups appear?"
+    (onCtaButtonClick)="handleNotifyUser()">
+</app-nothing-found>

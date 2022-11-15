@@ -1,0 +1,76 @@
+<header class="header" [ngStyle]="{backgroundColor: headerBackgroundColor, borderColor: headerBorderColor, boxShadow: headerShadow}" [ngClass]="{'header--white': isStatic}">
+  <div class="container container--header">
+    <a routerLink="/" class="logo logo--header" title="Go to homepage">
+      <img class="logo__image" src="assets/images/logo.svg" alt="ShareIt">
+    </a>
+
+    <section class="header__user-menu" [ngClass]="{'header__user-menu--hidden': !(isAuthenticated$ | async)}">
+      <a routerLink="/market/subscribe" routerLinkActive="user-page--active" class="user-page" title="Market">
+        <svg-icon name="market" class="icon icon--market user-page__icon"></svg-icon>
+        <span class="user-page__label user-page__label--market">Market</span>
+      </a>
+      <a routerLink="/my-subscriptions" routerLinkActive="user-page--active" class="user-page" title="My Subscriptions">
+        <svg-icon name="star" class="icon icon--star user-page__icon"></svg-icon>
+        <span class="user-page__label user-page__label--subscriptions">My Subscriptions</span>
+      </a>
+      <div class="user-menu" [ngClass]="{ 'user-menu--opened': isProfileMenuOpened }" (click)="handleOpenUserMenu($event)">
+        <ng-container *ngIf="isAuthenticated$ | async">
+          <ng-container *ngIf="userInfo$ | async as user">
+            <i *ngIf="user.userAvatarId; else avatarPlaceholder" [ngStyle]="{'background-image': 'url(' + apiUrl + '/users/logo/' + user.userAvatarId + ')'}"
+                class="user-avatar"  title="{{ user.firstName }} {{ user.lastName }}">
+            </i>
+
+            <ng-template #avatarPlaceholder>
+              <span class="user-avatar user-avatar--no-photo">
+                {{ user.firstName[0] }}{{ user.lastName[0] }}
+              </span>
+            </ng-template>
+
+            <p class="user-menu__name">{{user.firstName }} {{ user.lastName }}</p>
+          </ng-container>
+        </ng-container>
+
+        <button class="user-menu__toggle menu__toggle" (click)="handleBurgerClick($event)">
+          <svg-icon name="burger" class="icon icon--burger user-menu__burger"></svg-icon>
+          <svg-icon name="cross" class="icon icon--cross user-menu__cross"></svg-icon>
+        </button>
+
+        <nav class="menu menu--user-menu" [ngClass]="{ 'menu--user-menu-opened': isProfileMenuOpened }">
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a routerLink="/user-profile" class="menu__link" routerLinkActive="menu__link--active" [routerLinkActiveOptions]="{exact: true}" title="" (click)="handleCloseUserMenu($event)">
+                <span class="menu__icon">
+                  <svg-icon name="user" class="icon icon--user"></svg-icon>
+                </span>
+                Personal information
+              </a>
+            </li>
+
+            <li class="menu__item">
+              <a routerLink="/user-profile/payment-method" class="menu__link" routerLinkActive="menu__link--active" title="" (click)="handleCloseUserMenu($event)">
+                <span class="menu__icon">
+                  <svg-icon name="credit-card" class="icon icon--card"></svg-icon>
+                </span>
+                Payment History
+              </a>
+            </li>
+
+            <li class="menu__item">
+              <a href="javascript: void(0)" class="menu__link" title="" (click)="handleSignOut($event)">
+                <span class="menu__icon">
+                  <svg-icon name="logout" class="icon icon--logout"></svg-icon>
+                </span>
+                Sign Out
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <section class="header__user-actions" [ngClass]="{'header__user-actions--hidden': isAuthenticated$ | async}">
+      <button class="button button--black button--header" (click)="handleSignInClick($event)">Sign In</button>
+      <button class="button button--outline-black button--header" (click)="handleSignUpClick($event)">Sign Up</button>
+    </section>
+  </div>
+</header>

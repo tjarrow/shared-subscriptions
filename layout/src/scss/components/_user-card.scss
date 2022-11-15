@@ -1,0 +1,131 @@
+.user-card {
+  max-width: 608px;
+  margin: 0 auto 20px;
+  padding: 34px 33px;
+  background-color: #fff;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+
+  &--user { // .user-card--user
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 38px;
+    text-align: center;
+  }
+
+  &--change-password { // .user-card--change-password
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+  }
+
+  &--payment-history { // .user-card--payment-history
+    padding-top: 40px;
+  }
+
+  &--payment-method-add { // .user-card--payment-method-add
+    padding-top: 43px;
+    padding-bottom: 30px;
+  }
+
+  &__header { // .user-card__header
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 23px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+    }
+
+    .user-card--payment-method-add & {
+      margin-bottom: 22px;
+
+      @include respond-to(md) {
+        margin-bottom: 35px;
+      }
+    }
+  }
+
+  &__photo-wrapper { // .user-card__photo-wrapper
+    position: relative;
+    margin-top: -71px;
+    margin-bottom: 17px;
+    text-align: center;
+  }
+
+  &__text { // .user-card__text
+    margin-bottom: 26px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+
+    @include respond-to(md) {
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+  }
+
+  &__photo { // .user-card__photo
+    display: inline-block;
+    width: 142px;
+    height: 142px;
+    border-radius: 50%;
+  }
+
+  &__photo-button { // .user-card__photo-button
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border-width: 0;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.02);
+    transform: translate(26px, -13px);
+  }
+
+  &__name { // .user-card__name
+    margin-bottom: 14px;
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  &__email { // .user-card__email
+    margin-bottom: 37px;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-blue;
+    text-decoration: underline;
+
+    &:hover { // .user-card
+      text-decoration: none;
+    }
+
+    @include respond-to(md) {
+      margin-bottom: 29px;
+    }
+  }
+
+  &__title { // .user-card__title
+    margin-bottom: 0;
+    font-size: 28px;
+    font-weight: 600;
+  }
+}

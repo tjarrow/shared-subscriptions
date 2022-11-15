@@ -1,0 +1,20 @@
+{% from "templates/components/_icon.html" import icon %}
+
+<!-- Modal Cancel Subscription -->
+<div class="modal modal--delete-profile-image">
+		<div class="modal__card">
+				<div class="modal__header">
+					<h2 class="modal__title">Deleting Profile Image</h2>
+					<button class="modal__close">
+            {{ icon(name="modal-close") }}
+          </button>
+				</div>
+				<div class="modal__body">
+          <p class="modal__text">Are you sure you want to delete the profile image?</p>
+          <div class="modal__wrapper modal__wrapper--two-buttons">
+            <button class="button button--red button--half">Delete</button>
+            <button class="button button--outline-black button--half js-modal-close">Close</button>
+          </div>
+				</div>
+		</div>
+</div>

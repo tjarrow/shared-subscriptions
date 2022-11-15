@@ -1,0 +1,17 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% block page_title %}
+		Home
+{% endblock %}
+
+{% block page_header %}
+	{{ header(haveUserMenu=true) }}
+{% endblock %}
+
+{% set pageClass='page--home' %}
+
+{% block page_content %}
+  {% include "./templates/partials/_section--hero.html" %}
+  {% include "./templates/partials/_section--subscription.html" %}
+  {% include "./templates/partials/_section--advantages.html" %}
+{% endblock %}

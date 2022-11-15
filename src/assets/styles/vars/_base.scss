@@ -1,0 +1,28 @@
+@import '../utils/_mixins.scss';
+
+$main-bg: #fff;
+$main-text-color: #353C41;
+
+$link_color           : #2491EB;
+$link-decoration      : none;
+$link-hover-color     : #006BC4;
+$link-hover-decoration: underline;
+$table-bg             : #fff;
+
+$color-transparent: rgba(#fff, 0);
+$color-blue: #0a88dd;
+$color-black: #353c41;
+$color-red: #d81f26;
+$color-green: #22a199;
+$color-light-gray: #f9f9f9;
+$color-yellow: #ffc813;
+$color-orange: #FE9200;
+
+$breakpoints: (
+  'xs': 378px,
+  'sm':  490px,
+  'mb': 560px,
+  'md': 767px,
+  'lg':  992px,
+  'xl': 1200px
+);

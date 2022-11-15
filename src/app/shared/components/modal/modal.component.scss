@@ -1,0 +1,36 @@
+@import 'styles/vars/base';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  padding: 30px 15px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 3000;
+  pointer-events: none;
+  background-color: rgba(#122335, 0);
+  transition: background-color .35s ease;
+  padding-left: calc(15px + var(--scrollbar-width));
+}
+
+:host-context(.modal-shown) {
+  pointer-events: all;
+  background-color: rgba(#122335, 0.64);
+  padding-left: 15px;
+
+  .modal {
+    transition: transform .25s ease-in-out, opacity .25s ease;
+    opacity: 1;
+    transform: perspective(600px) translateY(0) rotateX(0) scale(1);
+  }
+}
+
+:host-context(.modal-will-hide) {
+  .modal {
+    transition: transform .25s ease-in-out, opacity .25s ease;
+  }
+}

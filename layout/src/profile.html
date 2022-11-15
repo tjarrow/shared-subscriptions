@@ -1,0 +1,193 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_form-group.html" import formGroup %}
+
+{% block page_title %}
+		Profile
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--profile' %}
+
+{% block page_content %}
+  <section class="section section--profile">
+    <div class="container">
+      <div class="page__header">
+        Your Profile
+        <button class="button button--outline-black button--profile-header">Sign Out</button>
+      </div>
+
+      <ul class="tabs">
+        <li class="tabs__item">
+            <a href="#" class="tabs__link tabs__link--active" data-row="1">Personal Informaion</a>
+        </li>
+        <li class="tabs__item">
+            <a href="#" class="tabs__link" data-row="2">Payment Method</a>
+        </li>
+      </ul>
+
+      <div class="page-slider">
+        <div class="page-slider__item">
+          <div class="user-card user-card--user">
+            <div class="user-card__photo-wrapper">
+              <img src="images/users/user_142x142.jpg" alt="Marica Jonatana" class="user-card__photo">
+              <button class="user-card__photo-button js-show-photo-menu">
+                {{ icon(name="dots", class="icon--dots") }}
+              </button>
+              <nav class="menu menu--user-photo">
+                  <ul class="menu__list">
+                    <li class="menu__item">
+                      <a href="index.html" class="menu__link">
+                        <span class="menu__icon">
+                          {{ icon('upload', class='icon--upload') }}
+                        </span>
+                        Upload
+                      </a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="index.html" class="menu__link">
+                        <span class="menu__icon">
+                          {{ icon('change', class='icon--change') }}
+                        </span>
+                        Change
+                      </a>
+                    </li>
+                    <li class="menu__item">
+                      <a href="#" class="menu__link" data-modal="delete-profile-image">
+                        <span class="menu__icon">
+                          {{ icon('dalete', class="icon--delete") }}
+                        </span>
+                        Delete
+                      </a>
+                    </li>
+                  </ul>
+              </nav>
+            </div>
+            <h2 class="user-card__name">Marica Jonatana</h2>
+            <a class="user-card__email" href="mailto:maricaj@gmail.com">maricaj@gmail.com</a>
+            <button class="button button--black button--profile-edit" data-modal="edit-user-information">Edit</button>
+          </div>
+
+          <div class="user-card user-card--change-password">
+            {{ formGroup(inputType="password", labelText="Password", value="password", isDisabled=true, hideButton=true, class="form-group--password-profile") }}
+            <button class="button button--black button--change-password" data-modal="change-password">Change Password</button>
+          </div>
+        </div>
+
+        <div class="page-slider__item">
+          <div class="user-card user-card--payment-method">
+            <div class="user-card__header">
+              <h2 class="user-card__title">Payment Method</h2>
+              <button class="button button--black button--profile-payment-method" data-row="3">Change</button>
+            </div>
+            <div class="credit-card">
+              <input type="text" class="credit-card__card-number" value="**** **** **** 8350" disabled>
+              <div class="credit-card__wrapper">
+                <div class="wrapper">
+                  <label for="credit-card__card-exp" class="credit-card__card-exp-label">Exp</label>
+                  <input type="text" id="credit-card__card-exp" class="credit-card__card-exp" value="11/23" disabled>
+                </div>
+                {{ icon(name="visa", class="icon--visa") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="user-card user-card--payment-history">
+            <div class="user-card__header">
+              <h2 class="user-card__title">Payment History</h2>
+              <div class="history-nav">
+                <button class="history-nav__button history-nav__button--prev">
+                  {{ icon(name="history-button", class="icon--history-nav") }}
+                </button>
+                <div class="history-nav__list">
+                  <div class="history-nav__value">
+                    <span class="history-nav__month">January</span>
+                    <span class="history-nav__separator">/</span>
+                    <span class="history-nav__year">2021</span>
+                  </div>
+                </div>
+                <button class="history-nav__button history-nav__button--next" disabled>
+                  {{ icon(name="history-button", class="icon--history-nav") }}
+                </button>
+              </div>
+            </div>
+            <div class="history-table">
+              <div class="history-table__row">
+                <div class="history-table__logo">
+                  <img src="images/services/netflix_red.svg" alt="" class="history-table__logo-image">
+                </div>
+                <div class="history-table__state">
+                  <p class="history-table__status">Completed</p>
+                  <time class="history-table__date">Jan 01, 2021 <span class="history-table__time">12:24</span></time>
+                </div>
+                <p class="history-table__price">- <span class="history-table__price-gray">S</span>$ 14.18</p>
+                <div class="history-table__card">
+                  {{ icon(name="visa-blue", class="icon--visa-blue") }}
+                  ****8350
+                </div>
+              </div>
+              <div class="history-table__row">
+                <div class="history-table__logo">
+                  <img src="images/services/spotify.svg" alt="" class="history-table__logo-image">
+                </div>
+                <div class="history-table__state">
+                  <p class="history-table__status"><span class="text-red">Terminated</span></p>
+                  <time class="history-table__date">Jan 01, 2021 <span class="history-table__time">12:24</span></time>
+                </div>
+                <p class="history-table__price">- <span class="history-table__price-gray">S</span>$ 124.18</p>
+                <div class="history-table__card">
+                  {{ icon(name="visa-blue", class="icon--visa-blue") }}
+                  ****8350
+                </div>
+              </div>
+              <div class="history-table__row">
+                <div class="history-table__logo">
+                  <img src="images/services/disney_plus.svg" alt="" class="history-table__logo-image">
+                </div>
+                <div class="history-table__state">
+                  <p class="history-table__status">Terminated</p>
+                  <time class="history-table__date">Jan 01, 2021 <span class="history-table__time">12:24</span></time>
+                </div>
+                <p class="history-table__price">- <span class="history-table__price-gray">S</span>$ 12.18</p>
+                <div class="history-table__card">
+                  {{ icon(name="visa-blue", class="icon--visa-blue") }}
+                  ****8350
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-slider__item">
+          <div class="user-card user-card--payment-method-add">
+            <div class="user-card__header">
+              <h2 class="user-card__title">Payment Method</h2>
+            </div>
+            <div class="row row--user-card">
+              <div class="col">
+                <div class="credit-card credit-card--active">
+                  <input type="text" class="credit-card__card-number" placeholder="**** **** **** ----">
+                  <div class="credit-card__wrapper">
+                    <div class="wrapper">
+                      <label for="credit-card__card-exp" class="credit-card__card-exp-label">Exp</label>
+                      <input type="text" id="credit-card__card-exp" class="credit-card__card-exp" placeholder="-- / --">
+                    </div>
+                    {{ icon(name="visa", class="icon--visa") }}
+                  </div>
+                </div>
+              </div>
+              <div class="col col--user-card-text">
+                <p class="user-card__text">By adding a card, you will be redirected to the Stripe sign up/sign in page.</p>
+                <button class="button button--blue button--card-add">Add a Card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

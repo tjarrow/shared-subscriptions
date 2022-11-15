@@ -1,0 +1,38 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+
+{% block page_title %}
+		Faq
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true) }}
+{% endblock %}
+
+{% set pageClass='page--faq' %}
+
+{% block page_content %}
+  <section class="section section--faq">
+    <div class="container">
+      <h1 class="page__header">Frequently Asked Questions</h1>
+      <div class="faq__box">
+        {% for item in settingsFaq %}
+            <div class="faq{{ ' faq--active' if loop.index == 2}}">
+              <a href="javascript:void(0)" class="faq__question-box" title="">
+                <span class="faq__icon-box">
+                  {{ icon('cross', 'faq__icon') }}
+                </span>
+                <span class="faq__question">{{ item.question }}</span>
+              </a>
+              <div class="faq__answer-box">
+                <p class="faq__answer">
+                  {{ item.answer }}
+                </p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+  </section>
+{% endblock %}

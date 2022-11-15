@@ -1,0 +1,84 @@
+<div class="alert alert--error" *ngIf="registerError$ | async">
+  <div class="alert__icon">
+    <svg-icon name="attention"></svg-icon>
+  </div>
+  <p class="alert__text">
+    <ng-container *ngIf="(registerError$ | async).error && (registerError$ | async).error.message">
+      <ng-container *ngIf="(registerError$ | async).error.message | isArray; else message">
+        <span *ngFor="let p of (registerError$ | async).error.message">{{p}}</span>
+      </ng-container>
+      <ng-template #message>{{(registerError$ | async).error.message}}</ng-template>
+    </ng-container>
+  </p>
+</div>
+
+<div class="brand-button__box" [ngClass]="{'brand-button__box--disabled': isLoading$ | async}">
+  <button class="brand-button brand-button--google" (click)="handleSignUpViaGoogle($event)">
+    <svg-icon name="google" class="brand-button__icon"></svg-icon>
+    Sign In with Google
+  </button>
+  <button class="brand-button brand-button--facebook" (click)="handleSignUpViaFacebook($event)">
+    <svg-icon name="facebook-lg" class="brand-button__icon"></svg-icon>
+    Sign In with Facebook
+  </button>
+</div>
+<div class="separator"><span class="separator__text">or</span></div>
+
+
+<form #form [formGroup]="formGroup" (submit)="handleFormSubmit($event)">
+  <section class="row row--form">
+    <div class="col col--form">
+      <app-input-control label="First Name" [control]="formGroup.get('firstName')"
+        [isErrored]="isFirstNameInvalid" [isAutoFocus]="true" [disabled]="isLoading$ | async"
+        [message]="isFirstNameInvalid ? 'Required' : ''">
+      </app-input-control>
+    </div>
+
+    <div class="col col--form">
+      <app-input-control label="Last Name" [control]="formGroup.get('lastName')"
+        [isErrored]="isLastNameInvalid" [disabled]="isLoading$ | async"
+        [message]="isLastNameInvalid ? 'Required' : ''">
+      </app-input-control>
+    </div>
+  </section>
+
+  <app-validation-input-control label="Email" [control]="formGroup.get('email')" type="email"
+      [isErrored]="isEmailInvalid || (checkEmailUniqualitySuccess$ | async)  && !(checkEmailUniqualitySuccess$ | async).isUnique"
+      [disabled]="isLoading$ | async"
+      [isChecking]="isEmailChecking$ | async"
+      [isChecked]="(checkEmailUniqualitySuccess$ | async) && (checkEmailUniqualitySuccess$ | async).isUnique"
+      [isAutocompleteOff]="true"
+      [message]="isEmailInvalid
+                  ? 'Email is not correct'
+                  : (checkEmailUniqualitySuccess$ | async)  && (checkEmailUniqualitySuccess$ | async).isUnique
+                      ? 'Well, email is unique!'
+                      : (checkEmailUniqualitySuccess$ | async)  && !(checkEmailUniqualitySuccess$ | async).isUnique
+                        ? 'Email is not unique'
+                        : ''">
+  </app-validation-input-control>
+
+
+  <app-create-password-control label="Password" [control]="formGroup.get('password')" (onChangePasswordVisability)="handleChangingPasswordVisability($event)">
+  </app-create-password-control>
+
+  <app-password-control *ngIf="formGroup.get('passwordConfirmation')" label="Repeat Password" [control]="formGroup.get('passwordConfirmation')" [disabled]="isLoading$ | async"
+      [isErrored]="isPasswordConfirmationInvalid" [message]="isPasswordConfirmationInvalid ? 'Password confirmaion mismatch' : '' " [hideIcon]="true">
+  </app-password-control>
+
+  <div class="modal__wrapper modal__wrapper--remember">
+    <app-checkbox-control [control]="formGroup.get('isReadTerms')" [isErrored]="isReadTermsConfirmed">
+      I have read the <a class="modal__link" href="/info/terms" target="_blank">Terms & Conditions</a>
+    </app-checkbox-control>
+  </div>
+
+  <button class="button button--blue button--modal-submit" [ngClass]="{'button--loading': isLoading$ | async}"
+    [attr.disabled]="!isSubmitEnabled ? 'disabled' : null" type="submit">Sign Up</button>
+</form>
+
+<p class="modal__text">
+  Already have an account?
+  <span (click)="handleSignIn($event)" class="modal__link"
+    [ngClass]="{'modal__link--loading': isLoading$ | async}" tabindex="0" title="">
+    Sign In
+  </span>
+</p>

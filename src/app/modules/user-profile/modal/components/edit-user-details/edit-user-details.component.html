@@ -1,0 +1,49 @@
+<div class="alert alert--error" *ngIf="userInfoError$ | async as errorDto">
+  <div class="alert__icon">
+    <svg-icon name="attention"></svg-icon>
+  </div>
+  <p class="alert__text">
+    <ng-container *ngIf="errorDto.error && errorDto.error.message">
+      <ng-container *ngIf="errorDto.error.message | isArray; else message">
+        <span *ngFor="let p of errorDto.error.message">{{p}}</span>
+      </ng-container>
+      <ng-template #message>{{errorDto.error.message}}</ng-template>
+    </ng-container>
+  </p>
+</div>
+
+<form [formGroup]="formGroup" (submit)="handleFormSubmit($event)">
+  <div class="row row--form">
+    <div class="col col--form">
+      <app-input-control label="First Name" [control]="formGroup.get('firstName')"
+        [isErrored]="isFirstNameInvalid" [isAutoFocus]="true" [disabled]="isLoading$ | async"
+        [message]="isFirstNameInvalid ? 'Required' : ''">
+      </app-input-control>
+    </div>
+    <div class="col col--form">
+      <app-input-control label="Last Name" [control]="formGroup.get('lastName')"
+        [isErrored]="isLastNameInvalid" [disabled]="isLoading$ | async"
+        [message]="isLastNameInvalid ? 'Required' : ''">
+      </app-input-control>
+    </div>
+  </div>
+
+  <app-validation-input-control label="Email" [control]="formGroup.get('email')" type="email"
+    [isErrored]="isEmailInvalid || (checkEmailUniqualitySuccess$ | async)  && !(checkEmailUniqualitySuccess$ | async).isUnique"
+    [disabled]="isLoading$ | async" [isChecking]="isEmailChecking$ | async"
+    [isChecked]="(checkEmailUniqualitySuccess$ | async) && (checkEmailUniqualitySuccess$ | async).isUnique"
+    [isAutocompleteOff]="true" [message]="isEmailInvalid
+                    ? 'Email is not correct'
+                    : (checkEmailUniqualitySuccess$ | async)  && (checkEmailUniqualitySuccess$ | async).isUnique
+                        ? 'Well, email is unique!'
+                        : (checkEmailUniqualitySuccess$ | async)  && !(checkEmailUniqualitySuccess$ | async).isUnique
+                          ? 'Email is not unique'
+                          : ''">
+  </app-validation-input-control>
+
+  <div class="modal__wrapper modal__wrapper--two-buttons modal__wrapper--pt">
+    <button class="button button--outline-black button--half js-modal-close" type="button" (click)="handleCloseModal()">Cancel</button>
+    <button class="button button--black button--half" [ngClass]="{'button--loading': isLoading$ | async}"
+        type="submit" [attr.disabled]="!isSubmitEnabled ? 'disabled' : null">Save</button>
+  </div>
+</form>

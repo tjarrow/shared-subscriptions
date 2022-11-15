@@ -1,0 +1,43 @@
+<section class="profile-card__header">
+  <h2 class="profile-card__title">Payment History</h2>
+  <div class="history-nav" *ngIf="false">
+    <button class="history-nav__button history-nav__button--prev">
+      <svg-icon name="left-chevron" class="icon--history-nav"></svg-icon>
+    </button>
+    <div class="history-nav__list">
+      <div class="history-nav__value">
+        <span class="history-nav__month">January</span>
+        <span class="history-nav__separator">/</span>
+        <span class="history-nav__year">2021</span>
+      </div>
+    </div>
+    <button class="history-nav__button history-nav__button--next" disabled>
+      <svg-icon name="left-chevron" class="icon--history-nav"></svg-icon>
+    </button>
+  </div>
+</section>
+
+<section class="history-table">
+  <svg-icon name="spinner" class="history-table__loader"
+      [ngClass]="{'history-table__loader--shown': isPaymentHistoryLoading$ | async}">
+  </svg-icon>
+
+  <div class="history-table__error-box" *ngIf="paymentHistoryError$ | async as error">
+    {{ error.message }}
+  </div>
+
+  <div class="history-table__row" *ngFor="let paymentItem of paymentHistory$ | async">
+    <div class="history-table__transaction-type">
+      Subscription update
+    </div>
+    <div class="history-table__state">
+      <p class="history-table__status">{{ paymentItem.status }}</p>
+      <time class="history-table__date">{{ paymentItem.dateTime | date: 'MMM dd, yyyy' }} <span class="history-table__time">{{ paymentItem.dateTime | date: 'HH:mm' }}</span></time>
+    </div>
+    <p class="history-table__price">- <span class="history-table__price-gray">S</span>$ {{ paymentItem.amount / 100 }}</p>
+    <div class="history-table__card">
+      <img src="assets/images/card-brand/{{ paymentItem.logos }}" alt="{{ paymentItem.cardBrand }}" class="history-table__card-brand">
+      ****{{ paymentItem.cardLast4Numbers }}
+    </div>
+  </div>
+</section>

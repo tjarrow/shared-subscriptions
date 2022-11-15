@@ -1,0 +1,35 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_subscription-card.html" import subscriptionCard %}
+
+{% block page_title %}
+		Start saving 3
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market' %}
+
+{% block page_content %}
+  <section class="section section--market">
+    <div class="container">
+      <h1 class="page__header">
+        <span class="return">
+          <a href="market2.html" class="return__link">{{ icon(name='return') }}</a>
+          Which plan would you like to <span class="text-red">share</span>?
+        </span>
+      </h1>
+      <div class="row row--market3">
+        <div class="col col--market3">
+          {{subscriptionCard(type="2", link='market4.html', logoImage="images/services/netflix_red.svg", price="4.55", counter1="2", counter2='<span class="counter__total-words">user<br>max.</span>')}}
+        </div>
+        <div class="col col--market3">
+          {{subscriptionCard(type="2", link='market4.html', logoImage="images/services/netflix_red.svg", price="19.98", counter1="4", counter2='<span class="counter__total-words">user<br>max.</span>')}}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

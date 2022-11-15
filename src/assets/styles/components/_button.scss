@@ -1,0 +1,367 @@
+.button {
+  display: inline-block;
+  padding: 15px 25px 16px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s,;
+  overflow: hidden;
+  user-select: none;
+
+  @include respond-to(md) {
+    border-radius: 16px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover:active {
+    // text-indent: 2px;
+    border-right-width: 1px;
+    border-left-width: 3px;
+  }
+
+  &--blue { //.button--blue
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #0477CB;
+      border-color: #0477CB;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:disabled {
+      background-color: #54ACE8;
+      border-color: #54ACE8;
+      color: #CBE6F8;
+      cursor: not-allowed;
+    }
+  }
+
+  &--black { //.button--black
+    background-color: $color-black;
+    border-color: $color-black;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: darken($color-black, 10%);
+      border-color: darken($color-black, 10%);
+    }
+
+    &:disabled {
+      background-color: #616568;
+      border-color: #616568;
+      color: #aeaeae;
+      cursor: not-allowed;
+    }
+  }
+
+  &--outline-black { //.button--outline-black
+    background-color: $color-transparent;
+    border-color: $color-black;
+    color: $color-black;
+
+    &:hover {
+      background-color: darken($color-black, 10%);
+      border-color: darken($color-black, 10%);
+      color: #fff;
+    }
+  }
+
+  &--big { //.button--big
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 14px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      padding-top: 17px;
+      padding-bottom: 18px;
+      border-radius: 16px;
+      font-size: 21px;
+    }
+  }
+
+  &--header { //.button--header
+    min-width: 90px;
+    padding: 9px 10px 10px;
+    font-size: 12px;
+
+    @include respond-to(md) {
+      min-width: 128px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+
+    &:first-child {
+      margin-right: 12px;
+
+      @include respond-to(md) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &--hero { //.button--hero
+    min-width: 172px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 14px;
+    font-size: 18px;
+
+    @include respond-to(lg) {
+      min-width: 192px;
+      padding-top: 17px;
+      padding-bottom: 18px;
+      border-radius: 16px;
+      font-size: 21px;
+    }
+  }
+
+  &--subscription { //.button--subscription
+    min-width: 178px;
+    font-size: 19px;
+  }
+
+  &--subscription { // .button--subscription
+    min-width: 178px;
+    font-size: 19px;
+  }
+
+  &--modal-submit { // .button--modal-submit
+    display: block;
+    width: 174px;
+    margin: 0 auto;
+    margin-bottom: 28px;
+    padding: 19px 25px;
+    font-size: 18px;
+  }
+
+  &--saving { // .button--saving
+    min-width: 154px;
+    padding: 13px 25px 13px;
+    font-size: 18px;
+    border-radius: 16px;
+
+    @include respond-to(md) {
+      min-width: 160px;
+      padding: 15px 25px 16px;
+    }
+  }
+
+  &--get-support { // .button--get-support
+    min-width: 170px;
+    padding: 17px 14px;
+    letter-spacing: -0.02em;
+
+    @include respond-to(md) {
+      min-width: 0;
+      padding: 16px 14px;
+    }
+  }
+
+  &--submit-slot { // .button--submit-slot
+    min-width: 176px;
+    padding: 16px 25px 17px;
+    font-size: 19px;
+  }
+
+  &--blue-close { // .button--blue-close
+    min-width: 17px;
+    margin-bottom: 32px;
+    padding: 16px 25px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      min-width: 174px;
+      margin-bottom: 32px;
+      padding: 20px 25px;
+    }
+  }
+
+  &--loading,
+  &--loading:focus {
+    background-color: #54ACE8;
+    border-color: #54ACE8;
+    color: #CBE6F8;
+    pointer-events: none;
+    position: relative;
+
+    &:after { // loading background
+      content: '';
+    }
+
+    &:before { // loading progress
+      content: '';
+      animation: loading 1s linear infinite;
+    }
+  }
+
+  &:after { // loading background
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(#fff, .3);
+    position: absolute;
+    top: -2px;
+    left: 0;
+  }
+
+  &:before { // loading progress
+    display: block;
+    width: 45%;
+    height: 3px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    background-color: rgba(#fff, .5);
+  }
+
+   &--transparent-black { // .button--transparent-black
+    background-color: $color-transparent;
+    border-color: $color-transparent;
+
+    &:hover {
+      background-color: $color-black;
+      border-color: $color-black;
+      color: #fff;
+    }
+  }
+
+  &--half { // .button--half
+    flex-grow: 1;
+    max-width: calc(50% - 10px);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      padding-top: 19px;
+      padding-bottom: 19px;
+    }
+  }
+
+  &--red { // .button--red
+    background-color: $color-red;
+    border-color: $color-red;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($color-red, 10%);
+      border-color: darken($color-red, 10%);
+    }
+
+  }
+
+  &--chat-submit { // .button--chat-submit
+    display: block;
+    width: 90px;
+    margin-left: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      width: 128px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 16px;
+    }
+  }
+
+  &--profile-edit { // .button--profile-edit
+    min-width: 119px;
+    padding: 12px 22px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      min-width: 128px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+  }
+
+  &--change-password { // .button--change-password
+    padding: 12px 22px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      min-width: 180px;
+      padding: 15px 10px 16px;
+      background-color: $color-transparent;
+      font-size: 16px;
+      color: $color-black;
+
+      &:hover,
+      &:focus {
+        background-color: $color-black;
+        color: #fff;
+      }
+    }
+  }
+
+  &--profile-header { // .button--profile-header
+    margin-top: 22px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      margin-top: 0;
+      margin-left: 23px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+  }
+
+  &--card-add { // .button--card-add
+    padding: 11px 16px 12px;
+
+    @include respond-to(md) {
+      padding: 15px 16px 16px;
+    }
+  }
+
+  &--profile-payment-method { // .button--profile-payment-method
+    margin-top: 26px;
+    padding: 12px 30px 12px;
+
+    @include respond-to(md) {
+      margin-top: 0;
+      padding: 15px 25px 16px;
+    }
+  }
+}
+
+.button--black.button--loading {
+  background-color: #46494b;
+  border-color: #46494b;
+  color: #c3c3c3;
+
+  &:after, // loading background
+  &:before { // loading progress
+    top: 0;
+  }
+}
+
+.button--red.button--loading {
+  background-color: #db656a;
+  border-color: #db656a;
+  color: #f2bfbf;
+
+  &:after, // loading background
+  &:before { // loading progress
+    top: 0;
+  }
+}

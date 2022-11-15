@@ -1,0 +1,35 @@
+﻿* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  color: #353c41;
+  overflow-x: hidden;
+}
+
+a,
+button {
+  outline: none !important;
+  cursor: pointer;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}

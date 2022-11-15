@@ -1,0 +1,71 @@
+@import 'styles/vars/base';
+
+.chat {
+  position: fixed;
+  z-index: 5000;
+  bottom: 30px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border-width: 0;
+  background-color: $color-black;
+  color: #fff;
+  transition: background-color .25s ease;
+
+  @media (min-width: 767px) {
+    bottom: 34px;
+    right: 34px;
+  }
+
+  :host-context(.modal-shown) & {
+    right: calc(15px + var(--scrollbar-width));
+
+    @media (min-width: 767px) {
+      right: calc(34px + var(--scrollbar-width));
+    }
+  }
+
+  @media (min-width: 1600px) {
+    right: auto;
+    left: calc(50% + 740px);
+
+    :host-context(.modal-shown) & {
+      right: auto;
+      left: calc(50% + 740px - var(--scrollbar-width)/2);
+    }
+  }
+
+  &:hover {
+    background-color: lighten($color-black, 6%);
+  }
+
+  &__icon {
+    transition: transform .15s ease-in-out;
+
+    .chat:hover & {
+      transform: scale(1.07);
+    }
+
+    .chat:hover:active & {
+      transition: transform .2s ease-in-out;
+      transform: scale(1);
+    }
+  }
+}
+
+.modal-chat {
+  position: fixed;
+  z-index: 5000;
+  right: 20px;
+  bottom: 20px;
+  transform: perspective(300px) ;
+  transform-origin: bottom center;
+
+  :host-context(.modal-shown) & {
+    right: calc(20px + var(--scrollbar-width));
+  }
+}

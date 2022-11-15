@@ -1,0 +1,70 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_plan-card.html" import planCard %}
+
+{% block page_title %}
+		Market 2
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market' %}
+
+{% block page_content %}
+  <section class="section section--market section--market6">
+    <div class="container">
+      <h1 class="page__header">
+        <span class="return">
+          <a href="market.html" class="return__link">{{ icon(name='return') }}</a>
+          Select your preferred plan
+        </span>
+      </h1>
+      <div class="section__wrapper">
+        <img src="images/services/netflix_red.svg" alt="" class="section__image">
+      </div>
+        <div class="row row--market6">
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="user1.jpg", userName="Marica J", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=2, userPhoto="user2.jpg", userName="Solo H", planType="PREMIUM") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=3, userPhoto="user3.jpg", userName="John D", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="user4.jpg", userName="Arnold T", planType="PREMIUM") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=2, userPhoto="user5.jpg", userName="Anton C", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="nophoto.svg", userName="Pavel P", planType="PREMIUM") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=4, userPhoto="user6.jpg", userName="Whii C", planType="PREMIUM") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="user7.jpg", userName="Roi Kaplan", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="user1.jpg", userName="Benjamin D", planType="PREMIUM") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=2, userPhoto="user2.jpg", userName="Marica J", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            {{ planCard(logoImage="netflix_red.svg", price="7.98", counter=1, userPhoto="user3.jpg", userName="Arnold T", planType="Standart") }}
+          </div>
+          <div class="col col--market6">
+            <div class="loading">
+              {{ icon(name="spinner", class="icon--spinner rotation") }}
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,9 @@
+@import 'styles/vars/base';
+
+@import './scss-blocks/footer';
+@import './scss-blocks/social-menu';
+
+:host {
+  margin-top: auto;
+  display: block;
+}

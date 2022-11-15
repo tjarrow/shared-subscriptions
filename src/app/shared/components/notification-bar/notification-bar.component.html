@@ -1,0 +1,27 @@
+<aside class="notification-bar" *ngFor="let notification of notifications$ | async" [@inOutAnimation]
+    [ngClass]="{'notification-bar--warning': notification.type === notificationType.Warning,
+                'notification-bar--error': notification.type === notificationType.Error }">
+  <section class="notification-bar__icon-box">
+    <svg-icon [name]="notification.icon ? notification.icon : 'plane'" class="notification-bar__icon"></svg-icon>
+  </section>
+
+  <section class="notification-bar__body" [ngClass]="{ 'notification-bar__body--has-extra-button': notification.action }">
+    <div class="notification-bar__message" [innerHtml]="notification.message"></div>
+
+    <div class="notification-bar__control-box">
+      <svg-icon name="spinner" class="notification-bar__spinner" [ngClass]="{'notification-bar__spinner--loading': isVerificationEmailSending$ | async}"></svg-icon>
+      <button class="notification-bar__control" (click)="handleResendClick()"
+          *ngIf="notification.action === notificationAction.Resend"
+          [attr.disabled]="(isVerificationEmailSending$ | async) ? 'disabled' : null">
+        Resend
+      </button>
+
+      <button class="notification-bar__control" (click)="handleCloseClick(notification.id)"
+          *ngIf="notification.willCloseAfter === undefined || notification.willCloseAfter !== undefined && notification.willCloseAfter == 0"
+          [attr.disabled]="(isVerificationEmailSending$ | async) ? 'disabled' : null">
+        Close
+      </button>
+    </div>
+  </section>
+
+</aside>

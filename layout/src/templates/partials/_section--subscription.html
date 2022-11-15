@@ -1,0 +1,24 @@
+{% from "templates/components/_subscription-card.html" import subscriptionCard %}
+{% from "templates/components/_icon.html" import icon %}
+
+<section class="section section--subscription">
+  <div class="container">
+    <div class="slider">
+      <div class="slider__container swiper-container">
+        <div class="slider__wrapper swiper-wrapper">
+          {{subscriptionCard(logoImage="images/services/spotify.svg", sharePrice="12", subscribePrice="4.55", class="swiper-slide")}}
+          {{subscriptionCard(logoImage="images/services/netflix_red.svg", sharePrice="12", subscribePrice="4.55", activeTabIndex=2, class="swiper-slide")}}
+          {{subscriptionCard(logoImage="images/services/disney_plus.svg", sharePrice="12", subscribePrice="4.55", class="swiper-slide")}}
+          {{subscriptionCard(logoImage="images/services/spotify.svg", sharePrice="12", subscribePrice="4.55", class="swiper-slide")}}
+          {{subscriptionCard(logoImage="images/services/netflix_red.svg", sharePrice="12", subscribePrice="4.55", activeTabIndex=2, class="swiper-slide")}}
+          {{subscriptionCard(logoImage="images/services/disney_plus.svg", sharePrice="12", subscribePrice="4.55", class="swiper-slide")}}
+        </div>
+      </div>
+      <div class="slider__pagination"></div>
+      <div class="slider__navigation">
+        <button class="slider__navbutton slider__navbutton--prev">{{ icon('arrow', class='icon--arrow slider__navicon') }}</button>
+        <button class="slider__navbutton slider__navbutton--next">{{ icon('arrow', class='icon--arrow slider__navicon') }}</button>
+      </div>
+    </div>
+  </div>
+</section>

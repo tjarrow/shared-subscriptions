@@ -1,0 +1,23 @@
+.body {
+  margin: 0;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  padding: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  // overflow-x: hidden; // Uncomment when project will be realized
+  transition: background-color .25s ease;
+
+  &--internal-page {
+    background-color: #F5F8FA;
+    padding-top: 65px;
+
+    @media (min-width: 767px) {
+      padding-top: 79px;
+    }
+  }
+
+  &.modal-shown {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width);
+  }
+}

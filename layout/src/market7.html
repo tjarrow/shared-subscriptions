@@ -1,0 +1,35 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_plan-card.html" import planCard %}
+
+{% block page_title %}
+		Market
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market pb-0' %}
+
+{% block page_content %}
+  <section class="section section--market section--market6">
+    <div class="container">
+      <h1 class="page__header">
+        <span class="return">
+          <a href="market.html" class="return__link">{{ icon(name='return') }}</a>
+          Select your preferred plan
+        </span>
+      </h1>
+    </div>
+  </section>
+  <section class="section section--ellipse section--ellipse-with-image">
+    <div class="container">
+      <img src="images/market/tablets.svg" alt="" class="section__image">
+      <h2 class="section__header">Sorry! All groups are full.</h2>
+      <p class="section__description">Do you want to get an email notification when free groups appear?</p>
+      <a href="index.html" class="button button--black button--get-support">Notify Me!</a>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,148 @@
+{% from "templates/components/_icon.html" import icon %}
+
+{% macro subscriptionCard(type=1, link, logoImage, sharePrice, subscribePrice, price, counter1, counter2, activeTabIndex=1, label, class) %}
+  <{{'a' if link else 'div'}}{{' href='+link if link}} class="subscription-card{{' subscription-card--type'+type if type>1}}{{' '+ class if class}}">
+    {% if label=='red' %}
+      <img class="subscription-card__label" src="images/market/label_red.svg" alt="">
+    {% endif %}
+    {% if label=='green' %}
+      <img class="subscription-card__label" src="images/market/label_green.svg" alt="">
+    {% endif %}
+    {% if type == 2 or type == 3 or type == 4 %}
+      <p class="counter subscription-card__counter-top">
+        <span class="counter__number">{{counter1}}</span>
+        <span class="counter__separator">/</span>
+        <span class="counter__total">{{counter2|safe}}</span>
+      </p>
+    {% endif %}
+    <div class="subscription-card__logo-wrapper">
+      <img src="{{logoImage}}" alt="" class="subscription-card__logo">
+    </div>
+    {% if type == 1 %}
+      <div class="subscription-card__tab-box">
+        <button class="subscription-card__tab{{' subscription-card__tab--active' if activeTabIndex==1}}" data-content="share">Owner</button>
+        <button class="subscription-card__tab{{' subscription-card__tab--active' if activeTabIndex==2}}" data-content="subscription">Subscriber</button>
+      </div>
+      <div class="subscription-card__content subscription-card__content--share{{' subscription-card__content--active' if activeTabIndex==1}}">
+        <div class="price subscription-card__price">
+          <p class="price__title">Save up to:</p>
+          <p class="price__wrapper">
+            <span class="price__small">S<span class="price__dollar">$</span></span>
+            {{sharePrice}}
+            <span class="price__small">/ mo</small>
+          </p>
+        </div>
+        <button class="button button--blue button--subscription">Share</button>
+      </div>
+      <div class="subscription-card__content subscription-card__content--subscription{{' subscription-card__content--active' if activeTabIndex==2}}">
+        <div class="price subscription-card__price">
+          <p class="price__title">Price from:</p>
+          <div class="price__wrapper">
+            <span class="price__small">S<span class="price__dollar">$</span></span>
+            {{subscribePrice}}
+            <span class="price__small">/ mo</small>
+          </div>
+        </div>
+        <button class="button button--blue button--subscription">Subscribe</button>
+      </div>
+    {% endif %}
+    {% if type == 2 %}
+      <h2 class="subscription-card__type">Standart</h2>
+      <p class="subscription-card__description">Watch on {{counter1}} screens <br>at the same time.</p>
+      <div class="price subscription-card__price">
+        <p class="price__title">Price</p>
+        <p class="price__wrapper">
+          <span class="price__small">S<span class="price__dollar">$</span></span>
+          {{price}}
+          <span class="price__small">/ mo</small>
+        </p>
+      </div>
+    {% endif %}
+    {% if type == 3 %}
+        <h2 class="subscription-card__type">Standart</h2>
+        <p class="subscription-card__description">Number of places available on your subscription. Not counting yourself.</p>
+        <form action="">
+            <div class="quantity subscription-card__quantity">
+              <button class="quantity__button" disabled>{{icon(name="minus")}}</button>
+              <input type="text" class="quantity__input" value="1">
+              <button class="quantity__button">{{icon(name="plus")}}</button>
+            </div>
+            <div class="price price--small subscription-card__price">
+              <p class="price__title">Save</p>
+              <p class="price__wrapper">
+                <span class="price__small">S<span class="price__dollar">$</span></span>
+                {{price}}
+                <span class="price__small">/ mo</small>
+              </p>
+            </div>
+            <button class="button button--black button--submit-slot" data-modal="successfully-placed">Submit</button>
+        </form>
+      {% endif %}
+      {% if type == 4 %}
+        <h2 class="subscription-card__type">Premium</h2>
+        <p class="subscription-card__description">Number of places available on your subscription.<br>Not counting yourself.</p>
+        <div class="subscription-card__owner">
+          <img src="images/users/user1.jpg" alt="" class="subscription-card__owner-photo">
+          Marica J
+        </div>
+        <form action="">
+            <div class="quantity subscription-card__quantity">
+              <button class="quantity__button" disabled>{{icon(name="minus")}}</button>
+              <input type="text" class="quantity__input" value="1">
+              <button class="quantity__button">{{icon(name="plus")}}</button>
+            </div>
+            <div class="price price--small subscription-card__price">
+              <p class="price__title">Subscription Price</p>
+              <p class="price__wrapper">
+                <span class="price__small">S<span class="price__dollar">$</span></span>
+                {{price}}
+                <span class="price__small">/ mo</small>
+              </p>
+            </div>
+            <div class="checkbox subscription-card__checkbox">
+              <input class="checkbox__input" type="checkbox" id="sc-read">
+              <label class="checkbox__label" for="sc-read">I have read the <a href="#" class="checkbox__link">NETFLIX T&Cs</a></label>
+            </div>
+            <button class="button button--black button--submit-slot" data-modal="successfully-placed">Subscribe & Pay</button>
+        </form>
+      {% endif %}
+      {% if type == 5 %}
+        <h2 class="subscription-card__type">Familly</h2>
+        <div class="price subscription-card__price">
+          <p class="price__title">Save up to</p>
+          <p class="price__wrapper">
+            <span class="price__small">S<span class="price__dollar">$</span></span>
+            {{price}}
+            <span class="price__small">/ mo</small>
+          </p>
+        </div>
+        <div class="user-list">
+          <p class="user-list__title">Subscribers</p>
+          <div class="user-list__wrapper">
+            <div class="user-list__item">
+              <img src="images/users/user1_48x48.jpg" alt="" class="user-list__photo">
+              <p class="user-list__tooltip">It is <span class="text-red">mine</span></p>
+            </div>
+            <div class="user-list__item user-list__item--online">
+              <img src="images/users/user4_48x48.jpg" alt="" class="user-list__photo">
+              <p class="user-list__tooltip">Amanda M</p>
+            </div>
+            <div class="user-list__item">
+              <img src="images/users/user2_48x48.jpg" alt="" class="user-list__photo">
+              <p class="user-list__tooltip">John D</p>
+            </div>
+            <div class="user-list__item">
+              <img src="images/users/user3_48x48.jpg" alt="" class="user-list__photo">
+              <p class="user-list__tooltip">Alex S</p>
+            </div>
+            <p class="counter counter--small">
+              <span class="counter__number">{{counter1}}</span>
+              <span class="counter__separator">/</span>
+              <span class="counter__total">{{counter2|safe}}</span>
+            </p>
+          </div>
+        </div>
+        <button class="button button--transparent-black button--cancel-subscription" data-modal="cancel-subscription">Cancel</button>
+      {% endif %}
+  </{{'a' if link else 'div'}}>
+{% endmacro %}

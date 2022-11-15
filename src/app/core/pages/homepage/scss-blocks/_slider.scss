@@ -1,0 +1,116 @@
+.slider {
+  //position: relative;
+  margin: 0 -16px;
+
+  @include respond-to(md) {
+    margin: 0 -60px;
+  }
+
+  @media (min-width: 1070px) {
+    margin: 0;
+  }
+
+  &__navbutton { // .slider__navbutton
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    padding: 0;
+    border: 1px solid #e9eced;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(#000, 0.04);
+    color: #cbcecf;
+    transition: box-shadow 0.2s, opacity .2s ease;
+    position: absolute;
+    z-index: 35;
+    top: 50%;
+    margin-top: -35px;
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(#000, 0.04), 0 2px 22px rgba(#000, 0.11);
+    }
+
+
+    &--prev { // .slider__navbutton--prev
+      transform: translateX(-30px) scaleX(-1);
+      left: 0;
+
+      @media (min-width: 1600px) {
+       left: -140px;
+      }
+
+      @media (min-width: 1700px) {
+        left: -200px;
+      }
+
+      @media (min-width: 1800px) {
+       left: -260px;
+      }
+    }
+
+
+    &--next { // .slider__navbutton--next
+      transform: translateX(30px);
+      right: 0;
+
+      @media (min-width: 1600px) {
+        right: -140px;
+      }
+
+      @media (min-width: 1700px) {
+        right: -200px;
+      }
+
+      @media (min-width: 1800px) {
+        right: -260px;
+      }
+    }
+
+
+    &--disabled { // .slider__navbutton--disabled
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__navicon {
+    transform: translateX(-11px);
+
+    @media (min-width: 1240px) {
+      transform: none;
+    }
+  }
+
+  &__pagination { // .slider__pagination
+    display: flex;
+    justify-content: center;
+    margin: 0 -5px;
+    padding-top: 20px;
+    text-align: center;
+
+    @media (min-width: 1070px) {
+      display: none;
+    }
+  }
+}
+
+:host {
+  ::ng-deep {
+    .slider__bullet {
+      width: 6px;
+      height: 6px;
+      margin: 0 5px;
+      padding: 0;
+      border-width: 0;
+      border-radius: 50%;
+      background-color: #c4c4c4;
+      transition: background-color 0.2s;
+
+      &--active { // .slider__bullet--active
+        background-color: $color-blue;
+      }
+    }
+  }
+}

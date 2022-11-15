@@ -1,0 +1,75 @@
+<main class="page page--home">
+  <section class="section section--hero">
+    <div class="container">
+      <div class="row row--hero">
+        <div class="col col--hero-text">
+          <h1 class="section__header">Subscription Sharing</h1>
+          <p class="section__description">Start saving by sharing your subscription or finding a co-shared plan.</p>
+          <button routerLink="/market" class="button button--blue button--hero">Get started</button>
+        </div>
+        <div class="col col--hero-img">
+          <img class="section__image" src="assets/images/hero.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--subscription">
+    <app-spinner [isShown]="(isLoading$ | async)" [isAbsolute]="true"></app-spinner>
+
+    <div class="homepage-swiper" [ngClass]=" 'homepage-swiper--active-slide--' + (swiperIndex + 1) " [class.homepage-swiper--ready]="isSwiperReady">
+      <swiper [config]="swiperConfig" [(index)]="swiperIndex"
+          *ngIf="!(isLoading$ | async) && services && services.length"
+          (mouseenter)="stopAutoplay()"
+          (mouseleave)="startAutoplay()"
+          (init)="handleSwiperInit()">
+        <app-subscription-card [service]="service" *ngFor="let service of services"></app-subscription-card>
+      </swiper>
+      <div class="slider__pagination"></div>
+      <button class="slider__navbutton slider__navbutton--prev">
+        <svg-icon name="arrow" class="icon--arrow slider__navicon"></svg-icon>
+      </button>
+      <button class="slider__navbutton slider__navbutton--next">
+        <svg-icon name="arrow" class="icon--arrow slider__navicon"></svg-icon>
+      </button>
+    </div>
+  </section>
+
+  <section class="section section--advantages">
+    <div class="container">
+      <h2 class="section__header">It’s simple, it’s safe.</h2>
+      <div class="row row--advantages">
+        <!-- advantage -->
+        <div class="col col--advantage">
+          <div class="advantage">
+            <div class="advantage__icon-wrapper">
+              <img class="advantage__icon" src="assets/images/advantages/ssl.svg" alt="">
+            </div>
+            <h6 class="advantage__title">SSL Certificate</h6>
+            <p class="advantage__text">Our platform and all transactions operate in a secure environment with an SSL security certificate.</p>
+          </div>
+        </div>
+        <!-- advantage -->
+        <div class="col col--advantage">
+          <div class="advantage">
+            <div class="advantage__icon-wrapper">
+              <img class="advantage__icon" src="assets/images/advantages/cooling_off.svg" alt="">
+            </div>
+            <h6 class="advantage__title">Cooling-off Period</h6>
+            <p class="advantage__text">Subscribers have up to 25 days to get a refund if they encounter technical issues.</p>
+          </div>
+        </div>
+        <!-- advantage -->
+        <div class="col col--advantage">
+          <div class="advantage advantage--big-text">
+            <div class="advantage__icon-wrapper">
+              <img class="advantage__icon" src="assets/images/advantages/stripe.svg" alt="">
+            </div>
+            <h6 class="advantage__title">Stripe Payment</h6>
+            <p class="advantage__text">For secure payment transactions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

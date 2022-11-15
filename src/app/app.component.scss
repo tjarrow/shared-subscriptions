@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  // min-height: calc(100vh - 56px);
+  min-height: 100vh;
+}
+
+:host-context(.body--internal-page) {
+  min-height: calc(100vh - 65px);
+
+  @media (min-width: 767px) {
+    min-height: calc(100vh - 79px);
+  }
+}
+

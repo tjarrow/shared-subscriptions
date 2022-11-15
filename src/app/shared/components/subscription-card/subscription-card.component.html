@@ -1,0 +1,39 @@
+<section class="subscription-card">
+  <div class="subscription-card__decor-box">
+    <span class="subscription-card__decor"></span>
+  </div>
+  <div *ngIf="!service.logo" class="subscription-card__logo-wrapper">
+    <img src="{{imageSrc}}" alt="{{ service.name }}" class="subscription-card__logo" [ngClass]="{'subscription-card__logo--right-assimetric': service.name === serviceName.Spotify}">
+  </div>
+  <div *ngIf="!!service.logo" class="subscription-card__logo-wrapper subscription-card__custom-logo" style="background-image: url({{imageSrc}}) !important">
+  </div>
+
+  <aside class="subscription-card__tab-container">
+    <div class="subscription-card__tab-box" [ngClass]="'subscription-card__tab-box--active-tab--' + activeTab">
+      <button class="subscription-card__tab" (click)="activeTab = 1">Owner</button>
+      <button class="subscription-card__tab" (click)="activeTab = 2">Subscriber</button>
+    </div>
+  </aside>
+
+  <ul class="subscription-card__content-box" [ngClass]="'subscription-card__content-box--active-tab--' + activeTab">
+    <li class="subscription-card__content">
+      <p class="subscription-card__text">Save up to:</p>
+      <p class="subscription-card__cost">
+        <span class="subscription-card__cost--small">S<span class="subscription-card__cost--dollar">$</span></span>
+        {{ ownerSavingPrice }}
+        <small class="subscription-card__cost--small">/mo</small>
+      </p>
+      <button [routerLink]="'/market/share/' + (service.name | lowercase | snakeCase)" class="button button--blue button--subscription">Share</button>
+    </li>
+
+    <li class="subscription-card__content">
+      <p class="subscription-card__text">Price from:</p>
+      <p class="subscription-card__cost">
+        <span class="subscription-card__cost--small">S<span class="subscription-card__cost--dollar">$</span></span>
+        {{ subscriberPrice }}
+        <small class="subscription-card__cost--small">/mo</small>
+      </p>
+      <button [routerLink]="'/market/subscribe/' + (service.name | lowercase | snakeCase)" class="button button--blue button--subscription">Subscribe</button>
+    </li>
+  </ul>
+</section>

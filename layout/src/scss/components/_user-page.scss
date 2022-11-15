@@ -1,0 +1,25 @@
+.user-page {
+  display: none;
+  align-items: center;
+  height: 47px;
+  margin-left: 18px;
+  padding: 12px 17px;
+  border-radius: 30px;
+  font-size: 18px;
+  letter-spacing: -0.05em;
+  color: $color-black;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    color: #065184;
+  }
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+
+  &--active { // .user-page--active
+    background-color: #f7f7f8;
+  }
+}

@@ -1,0 +1,45 @@
+<section class="subscription-card">
+  <div class="subscription-card__decor-box">
+    <span class="subscription-card__decor"></span>
+  </div>
+
+  <p class="counter subscription-card__counter-top">
+    <span class="counter__number">{{plan.maxSlots}}</span>
+    <span class="counter__separator">/</span>
+    <span class="counter__total"><span class="counter__total-words">user<br>max.</span></span>
+  </p>
+
+
+  <div *ngIf="!service.logo" class="subscription-card__logo-wrapper">
+    <img src="{{imageSrc}}" alt="{{ service.name }}" class="subscription-card__logo" [ngClass]="{'subscription-card__logo--right-assimetric': service.name === serviceName.Spotify}">
+  </div>
+  <div *ngIf="!!service.logo" class="subscription-card__logo-wrapper subscription-card__custom-logo" style="background-image: url({{imageSrc}}) !important"></div>
+
+  <h2 class="subscription-card__type">{{ plan.name }}</h2>
+
+  <p class="subscription-card__description">{{ plan.description }}</p>
+
+  <div class="subscription-card__content subscription-card__content--simple">
+    <p class="subscription-card__text">Price</p>
+    <p class="subscription-card__cost">
+      <span class="subscription-card__cost--small">S<span class="subscription-card__cost--dollar">$</span></span>
+      {{ plan.price / 100 }}
+      <small class="subscription-card__cost--small">/mo</small>
+    </p>
+  </div>
+
+
+
+  <!-- <ul class="subscription-card__content-box" [ngClass]="'subscription-card__content-box--active-tab--' + activeTab">
+    <li class="subscription-card__content">
+      <p class="subscription-card__text">Save up to:</p>
+      <p class="subscription-card__cost">
+        <span class="subscription-card__cost--small">S<span class="subscription-card__cost--dollar">$</span></span>
+        {{ ownerSavingPrice }}
+        <small class="subscription-card__cost--small">/mo</small>
+      </p>
+      <button [routerLink]="'/market/share/' + (service.name | lowercase)"
+        class="button button--blue button--subscription">Share</button>
+    </li>
+  </ul> -->
+</section>

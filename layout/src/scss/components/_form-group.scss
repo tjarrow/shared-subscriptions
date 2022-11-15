@@ -1,0 +1,129 @@
+.form-group {
+  margin-bottom: 8px;
+  padding-bottom: 20px;
+
+  &--password-profile {
+    flex-grow: 1;
+    width: 100%;
+    margin-bottom: 24px;
+    padding-bottom: 0;
+
+    @include respond-to(md) {
+      width: auto;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__wrapper { // .form-group__wrapper
+    position: relative;
+  }
+
+  &__label { // .form-group__label
+    position: absolute;
+    top: 21px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-black;
+    white-space: nowrap;
+    transition: transform 0.2s, font-size 0.2s, color 0.2s;
+    pointer-events: none;
+
+    .form-group--show-label & {
+      font-size: 12px;
+      color: $color-blue;
+      transform: translate(-2px, -12px);
+    }
+
+    .form-group--error & {
+      color: $color-red;
+    }
+
+    .form-group--disabled & {
+      color: #6AB6E9;
+    }
+  }
+
+  &__input,
+  &__textarea { // .form-group__input, .form-group__textarea
+    display: block;
+    width: 100%;
+    padding: 27px 15px 9px;
+    background-color: $color-light-gray;
+    border: 1px solid #707578;
+    border-width: 0 0 1px 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &:focus {
+      outline: none;
+    }
+
+    .form-group--error & {
+      background-color: #FEF6F6;
+      border-color: $color-red;
+    }
+
+    .form-group--disabled & {
+      border-width: 0;
+      padding-bottom: 10px;
+      color: #83888B;
+    }
+  }
+
+  &__textarea { // .form-group__textarea
+    min-height: 162px;
+    resize: none;
+  }
+
+  &__error { // .form-group__error
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    visibility: hidden;
+    padding-left: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-red;
+
+    .form-group--error & {
+      visibility: visible;
+    }
+  }
+
+  &__button { // .form-group__button
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-width: 0;
+    background-color: $color-transparent;
+    color: #5c6266;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+
+  &__checked { // .form-group__checked
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border-width: 0;
+    background-color: $color-transparent;
+  }
+}

@@ -1,0 +1,11 @@
+@import 'styles/vars/base';
+
+@import './scss-blocks/market-action';
+
+:host {
+  min-height: calc(73vh);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

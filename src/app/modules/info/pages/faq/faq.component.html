@@ -1,0 +1,25 @@
+<section class="section section--faq">
+  <div class="container">
+    <h1 class="page__header page__header--faq">Frequently Asked Questions</h1>
+    <ul class="faq__box">
+      <li class="faq" *ngFor="let faq of faqList; let i = index"
+          [ngClass]="{'faq--active': activeFaqIndex === i}"
+          (click)="activateFaqIndex(i)" tabindex="0"
+          (keydown.space)="activateFaqIndex(i)"
+          (keydown.enter)="activateFaqIndex(i)">
+        <span class="faq__question-box" title=""
+            (click)="deactivateFaqIndex($event, i)"
+            (keydown.space)="deactivateFaqIndex($event, i)"
+            (keydown.enter)="deactivateFaqIndex($event, i)">
+          <i class="faq__icon-box">
+            <svg-icon name="cross" class="faq__icon"></svg-icon>
+          </i>
+          <strong class="faq__question">{{ faq.question }}</strong>
+        </span>
+        <div class="faq__answer-box" [@toggleItem]="activeFaqIndex === i ? 'in' : 'out'">
+          <p class="faq__answer" [innerHtml]="faq.answer"></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

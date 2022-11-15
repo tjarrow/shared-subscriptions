@@ -1,0 +1,81 @@
+.page {
+  overflow-x: hidden;
+
+  &__header { // .page__header
+    margin-bottom: 22px;
+    font-size: 28px;
+    line-height: 35px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+
+    @include respond-to(md) {
+      font-size: 50px;
+      line-height: 58px;
+    }
+
+    &--with-button { // .page__header--with-button
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @include respond-to(md) {
+        flex-direction: row;
+      }
+    }
+
+    &--faq {
+      margin-bottom: 30px;
+      text-align: center;
+
+      @include respond-to(md) {
+        margin-bottom: 54px;
+      }
+    }
+
+    &--market {
+      margin: 0 auto 50px;
+      font-size: 24px;
+      line-height: 29px;
+      text-align: center;
+
+      @include respond-to(md) {
+        margin-bottom: 50px;
+        max-width: 100%;
+        font-size: 50px;
+        line-height: 58px;
+      }
+    }
+
+    .page--profile & {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      line-height: 29px;
+      text-align: center;
+
+      @include respond-to(md) {
+        flex-direction: row;
+        margin-bottom: 24px;
+        padding-left: 151px;
+        line-height: 58px;
+      }
+    }
+  }
+
+  &--home { // .page--home
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #fff;
+  }
+
+  &--reset-password { // .page--reset-password
+    background-color: #fff;
+
+    @include respond-to(md) {
+      background-color: #F5F8FA;
+    }
+  }
+}

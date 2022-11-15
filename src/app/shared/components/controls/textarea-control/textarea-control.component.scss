@@ -1,0 +1,56 @@
+@import 'styles/vars/base';
+
+.textarea-control {
+  margin-bottom: 8px;
+  padding-bottom: 20px;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    padding: 17px 15px 9px;
+    background-color: $color-light-gray;
+    border: 1px solid #707578;
+    border-width: 0 0 1px 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s;
+    min-height: 162px;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    .textarea-control--error & {
+      background-color: #FEF6F6;
+      border-color: $color-red;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: rgba(#707578, 0);
+      color: #707578;
+    }
+  }
+
+  &__message {
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    padding-left: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-black;
+
+    .textarea-control--error & {
+      color: $color-red;
+    }
+  }
+}

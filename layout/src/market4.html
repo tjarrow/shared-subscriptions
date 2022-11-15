@@ -1,0 +1,32 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_subscription-card.html" import subscriptionCard %}
+
+{% block page_title %}
+		Start saving 4
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market' %}
+
+{% block page_content %}
+  <section class="section section--market">
+    <div class="container">
+      <h1 class="page__header">
+        <span class="return">
+          <a href="market3.html" class="return__link">{{ icon(name='return') }}</a>
+          How many slots do you want to <span class="text-red">share</span>?
+        </span>
+      </h1>
+      <div class="row row--market4">
+        <div class="col col--market4">
+          {{subscriptionCard(type="3", logoImage="images/services/netflix_red.svg", price="4.18", counter1=2, counter2=4)}}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

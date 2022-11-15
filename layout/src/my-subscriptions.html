@@ -1,0 +1,45 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_subscription-card.html" import subscriptionCard %}
+
+{% block page_title %}
+		My subscriptions
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market' %}
+
+{% block page_content %}
+  <section class="section section--market section--market6">
+    <div class="container">
+      <h1 class="page__header page__header--with-button">
+        <span class="return">
+          <a href="market.html" class="return__link">{{ icon(name='return') }}</a>
+          My Subscriptions
+        </span>
+        <a href="#" class="button button--blue button--add-subscription">Add New</a>
+      </h1>
+      <div class="row row--subscribtions">
+        <div class="col col--subscribtions">
+          {{subscriptionCard(type="5", label="red", logoImage="images/services/netflix_red.svg", price="4.98", counter1=4, counter2=4)}}
+        </div>
+        <div class="col col--subscribtions">
+          {{subscriptionCard(type="5", label="green", logoImage="images/services/disney_plus.svg", price="11.55", counter1=4, counter2=4)}}
+        </div>
+        <div class="col col--subscribtions">
+          {{subscriptionCard(type="5", label="red", logoImage="images/services/netflix_red.svg", price="4.55", counter1=4, counter2=4)}}
+        </div>
+        <div class="col col--subscribtions">
+          {{subscriptionCard(type="5", label="red", logoImage="images/services/netflix_green.svg", price="4.00", counter1=4, counter2=4)}}
+        </div>
+        <div class="col col--subscribtions">
+          {{subscriptionCard(type="5", label="red", logoImage="images/services/netflix_red.svg", price="5.98", counter1=4, counter2=4)}}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

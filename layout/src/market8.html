@@ -1,0 +1,32 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_subscription-card.html" import subscriptionCard %}
+
+{% block page_title %}
+		Market
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market' %}
+
+{% block page_content %}
+  <section class="section section--market section--market6">
+    <div class="container">
+      <h1 class="page__header">
+        <span class="return">
+          <a href="market.html" class="return__link">{{ icon(name='return') }}</a>
+          Plan Subscription
+        </span>
+      </h1>
+      <div class="row row--market8">
+        <div class="col col--market8">
+          {{subscriptionCard(type="4", logoImage="images/services/netflix_red.svg", price="14.18", counter1=1, counter2='2<span class="counter__total-words counter__total-words--small">slots<br>left</span>')}}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,44 @@
+.counter {
+  margin-bottom: 0;
+  font-weight: 700;
+  text-align: left;
+
+  &__number { // .counter__number
+    display: inline-block;
+    font-size: 35px;
+
+    &--offer {
+      font-size: 31px;
+    }
+  }
+
+  &__separator { // .counter__separator
+    display: inline-block;
+    font-size: 21px;
+    color: #8A8E91;
+  }
+
+  &__total { // .counter__total
+    display: inline-block;
+    font-size: 21px;
+    line-height: 0.85;
+    color: #8A8E91;
+
+    &--big-card {
+      padding-left: 2px;
+      transform: translateY(2px);
+    }
+  }
+
+  &__total-words { // .counter__total-words
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 12px;
+    line-height: 11px;
+
+    &--small { // .counter__total-words--small
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
+}

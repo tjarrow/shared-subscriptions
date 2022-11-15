@@ -1,0 +1,8 @@
+@import 'styles/vars/base';
+
+@import './scss-blocks/quantity';
+
+:host {
+  display: block;
+  filter: drop-shadow(0px 4.5714px 6.76124px rgba(0, 0, 0, 0.04));
+}

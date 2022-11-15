@@ -1,0 +1,38 @@
+{% from "./_icon.html" import icon %}
+
+{% macro formGroup(id, inputType = 'text', value, labelText, errorText, requirements, showPassword, hideButton, isDisabled, checked, class) %}
+    {% set type = inputType %}
+    {% if type == 'password' and showPassword%}
+      {% set type = 'text' %}
+    {% endif %}
+		<div class="form-group{{' form-group--show-label' if value}}{{' form-group--error' if errorText}}{{' form-group--with-button' if inputType == 'password'}}{{' form-group--disabled' if isDisabled}}{{' '+class if class}}">
+				<div class="form-group__wrapper">
+            {% if labelText %}
+						  <label for="{{id}}" class="form-group__label">{{labelText}}</label>
+            {% endif %}
+            {% if inputType == 'textarea' %}
+              <textarea id="{{id}}" class="form-group__textarea" value="{{value}}"{{ ' required' if isRequired }}{{ ' disabled' if isDisabled }} {{ attrString if attrString }}>{{value if value}}</textarea>
+            {% else %}
+						<input type="{{type}}" id="{{id}}" class="form-group__input" value="{{value}}"{{ ' required' if isRequired }}{{ ' disabled' if isDisabled }} {{ attrString if attrString }}>
+            {% endif %}
+						{% if inputType == 'password' and not showPassword and not hideButton %}
+							<button class="form-group__button">
+								{{ icon('eye-with-line', class='icon--eye-with-line') }}
+							</button>
+						{% endif %}
+            {% if inputType == 'password' and showPassword %}
+							<button class="form-group__button">
+								{{ icon('eye', class='icon--eye') }}
+							</button>
+						{% endif %}
+            {% if checked %}
+              <div class="form-group__checked">
+							  {{ icon('check-green', class='icon--check-green') }}
+              </div>
+						{% endif %}
+						{% if errorText %}
+								<span class="form-group__error">{{errorText}}</span>
+						{% endif %}
+				</div>
+		</div>
+{% endmacro %}

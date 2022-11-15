@@ -1,0 +1,114 @@
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container">
+      <div class="row">
+        <div class="col col--footer-info">
+          <a routerLink="/" class="logo logo--footer" title="Home page">
+            <img src="assets/images/logo.svg" alt="ABC Fintech" class="logo__image">
+          </a>
+          <address class="footer__addr">Made in Singapore</address>
+          <!-- <a class="footer__phone" href="tel:+111111111">+1 (111) 111-1111</a> -->
+        </div>
+        <div class="col col--footer-nav">
+          <div class="footer__nav-block">
+            <h6 class="footer__category">Navigation</h6>
+            <ul class="footer__list">
+              <li class="footer__nav-elem">
+                <a routerLink="/market" class="footer__nav-link" routerLinkActive="footer__nav-link--active" title="">Market</a>
+              </li>
+              <ng-container *ngIf="!(isAuthenticated$ | async); else links">
+                <li class="footer__nav-elem">
+                  <span tabindex="0" class="footer__nav-link" title=""
+                      (click)="handleSignInClick($event)"
+                      (keydown.enter)="handleSignInClick($event)"
+                      (keydown.space)="handleSignInClick($event)">
+                    Sign In
+                  </span>
+                </li>
+                <li class="footer__nav-elem">
+                  <span tabindex="0" class="footer__nav-link" title=""
+                      (click)="handleSignUpClick($event)"
+                      (keydown.enter)="handleSignUpClick($event)"
+                      (keydown.space)="handleSignUpClick($event)">
+                    Registration
+                  </span>
+                </li>
+              </ng-container>
+              <ng-template #links>
+                <li class="footer__nav-elem">
+                  <a routerLink="/my-subscriptions" class="footer__nav-link" routerLinkActive="footer__nav-link--active" title="">My Subscriptions</a>
+                </li>
+                <li class="footer__nav-elem">
+                  <a routerLink="/user-profile" class="footer__nav-link" routerLinkActive="footer__nav-link--active" title="">My Profile</a>
+                </li>
+              </ng-template>
+            </ul>
+          </div>
+
+          <div class="footer__nav-block">
+            <h6 class="footer__category">Resources</h6>
+            <ul class="footer__list">
+              <li class="footer__nav-elem">
+                <a routerLink="/info" class="footer__nav-link" routerLinkActive="footer__nav-link--active" [routerLinkActiveOptions]="{exact: true}" title="">FAQ</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__nav-block">
+            <h6 class="footer__category">Support</h6>
+            <ul class="footer__list">
+              <li class="footer__nav-elem">
+                <a routerLink="/info/terms" class="footer__nav-link" routerLinkActive="footer__nav-link--active" title="">Terms and Conditions</a>
+              </li>
+              <li class="footer__nav-elem">
+                <a routerLink="/info/privacy" class="footer__nav-link" routerLinkActive="footer__nav-link--active" title="">Privacy Policy</a>
+              </li>
+              <li class="footer__nav-elem">
+                <span class="footer__nav-link" title="" (click)="handleShowSupport($event)"
+                    (keydown.enter)="handleShowSupport($event)"
+                    (keydown.space)="handleShowSupport($event)"
+                    tabindex="0">Get Support</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container container--copyright">
+      <p class="footer__copyright">© {{ currentYear }} ShareIt.
+        <br class="footer__copyright-br">All Rights Reserved.
+      </p>
+
+      <ul class="social-menu">
+        <!-- <li class="social-menu__elem">
+          <a href="https://twitter.com" class="social-menu__link" target="_blank" title="" rel="nofollow">
+            <svg-icon name="twitter" class="icon"></svg-icon>
+          </a>
+        </li> -->
+        <li class="social-menu__elem">
+          <a href="https://fb.me/Shareit.Singapore" class="social-menu__link" target="_blank" title="" rel="nofollow">
+            <svg-icon name="facebook" class="icon"></svg-icon>
+          </a>
+        </li>
+        <li class="social-menu__elem">
+          <a href="https://www.instagram.com/shareit.sg/" class="social-menu__link" target="_blank" title="" rel="nofollow">
+            <svg-icon name="instagram" class="icon"></svg-icon>
+          </a>
+        </li>
+        <li class="social-menu__elem">
+          <a href="https://www.linkedin.com/company/shareit-sg" class="social-menu__link" target="_blank" title="" rel="nofollow">
+            <svg-icon name="linkedin" class="icon"></svg-icon>
+          </a>
+        </li>
+        <!-- <li class="social-menu__elem">
+          <a href="https://youtube.com" class="social-menu__link social-menu__link--youtube" target="_blank" title="" rel="nofollow">
+            <svg-icon name="youtube" class="icon"></svg-icon>
+          </a>
+        </li> -->
+      </ul>
+
+    </div>
+  </div>
+</footer>

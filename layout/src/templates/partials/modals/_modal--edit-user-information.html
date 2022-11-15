@@ -1,0 +1,31 @@
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_form-group.html" import formGroup %}
+
+<!-- Modal Sign Up -->
+<div class="modal modal--edit-user-information">
+		<div class="modal__card">
+				<div class="modal__header">
+					<h2 class="modal__title">Editing User Information</h2>
+					<button class="modal__close">
+            {{ icon(name="modal-close") }}
+          </button>
+				</div>
+				<div class="modal__body">
+          <form action="index.html">
+            <div class="row row--form">
+              <div class="col col--form">
+                {{ formGroup(inputType="text", labelText="First Name", value="Mike") }}
+              </div>
+              <div class="col col--form">
+                {{ formGroup(inputType="text", labelText="Last Name", value="Vazovski") }}
+              </div>
+            </div>
+            {{ formGroup(inputType="email", labelText="Email", value="mike.vazovski@hotmail.com", checked=true) }}
+            <div class="modal__wrapper modal__wrapper--two-buttons">
+              <button class="button button--outline-black button--half js-modal-close" type="button">Cancel</button>
+              <button class="button button--black button--half" type="submit">Save</button>
+            </div>
+          </form>
+				</div>
+		</div>
+</div>

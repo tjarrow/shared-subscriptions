@@ -1,0 +1,48 @@
+<div class="modal__card">
+  <section class="modal__header">
+    <h2 class="modal__title">How can we help you?</h2>
+    <button class="modal__closer" (click)="close()">
+      <svg-icon name="round-cross"></svg-icon>
+    </button>
+  </section>
+
+  <section class="modal__body">
+    <div class="alert alert--error" *ngIf="supportRequestedError$ | async as errorEvent">
+      <div class="alert__icon">
+        <svg-icon name="attention"></svg-icon>
+      </div>
+      <p class="alert__text">
+        <ng-container *ngIf="errorEvent.error && errorEvent.error.message">
+          <ng-container *ngIf="errorEvent.error.message | isArray; else message">
+            <span *ngFor="let p of errorEvent.error.message">{{p}}</span>
+          </ng-container>
+          <ng-template #message>{{errorEvent.error.message}}</ng-template>
+        </ng-container>
+      </p>
+    </div>
+
+    <div class="alert alert--error" *ngIf="isRecaptchaError">
+      <div class="alert__icon">
+        <svg-icon name="attention"></svg-icon>
+      </div>
+      <p class="alert__text">reCAPTCHA error</p>
+    </div>
+
+    <form [formGroup]="formGroup" (submit)="handleFormSubmit($event)">
+      <app-input-control label="Your email" [control]="formGroup.get('email')"
+        [isErrored]="isEmailInvalid" [isAutoFocus]="isUserSignedIn ? false : true" [disabled]="isLoading$ | async"
+        [message]="isEmailInvalid ? 'Email is not correct' : ''">
+      </app-input-control>
+
+      <app-textarea-control label="Please add your text here" [control]="formGroup.get('message')"
+          [isErrored]="isMessageInvalid" [isAutoFocus]="!isUserSignedIn ? false : true" [disabled]="isLoading$ | async"
+          [message]="isMessageInvalid ? 'Required' : ''">
+      </app-textarea-control>
+
+      <button class="button button--blue button--chat-submit"
+          [ngClass]="{'button--loading': isLoading$ | async}"
+          [attr.disabled]="!isSubmitEnabled ? 'disabled' : null"
+          type="submit">Send</button>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,37 @@
+.social-menu {
+	display: flex;
+	margin: 0 -20px 22px;
+
+  @include respond-to(md) {
+    margin-bottom: 0;
+  }
+
+	&__elem { // .social-menu__elem
+		padding: 0 15px;
+
+    @include respond-to(md) {
+      padding: 0 14px;
+    }
+	}
+
+	&__link { // .social-menu__link
+		display: flex;
+    align-items: center;
+    justify-content: center;
+		width: 28px;
+    height: 28px;
+    padding: 2px;
+		color: #A8AAAB;
+		text-decoration: none;
+		transition: color 0.2s;
+
+    @include respond-to(md) {
+      width: 32px;
+      height: 32px;
+    }
+
+		&:hover {
+			color: $color-yellow;
+		}
+	}
+}

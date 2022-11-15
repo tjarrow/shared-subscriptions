@@ -1,0 +1,55 @@
+<section class="section section--market">
+  <div class="container">
+    <ng-container *ngIf="currentRole === userRole.share; else subscribe">
+      <h1 class="page__header page__header--market">
+        <span class="return-link">
+          <a [routerLink]="['/market', currentRole, currentService]" class="return-link__link" title="">
+            <svg-icon name="round-left"></svg-icon>
+          </a>
+          How many slots do you want to <span class="text-red">share</span>?
+        </span>
+      </h1>
+
+      <div class="slot-selection">
+        <app-spinner [isShown]="(isLoading$ | async)" [isAbsolute]="true"></app-spinner>
+
+        <ul class="row row--market4" *ngIf="plan" [@inOutAnimation]>
+          <li class="col col--market4">
+            <app-slot-input-control [plan]="plan" [serviceName]="currentService" [errorMessage]="errorMessage"
+                [control]="formGroup.get('quantity')" [isSubmitDisabled]="isSubmitDisabled"
+                [isOffer]="true" [termsControl]="formGroup.get('isAcceptedTerms')" [terms]="terms[currentService]"
+                [isAutoFocus]="true" (onSubmit)="handleFormSubmit()" [isLoading]="isOfferCreating$ | async">
+            </app-slot-input-control>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+
+    <ng-template #subscribe>
+      <h1 class="page__header page__header--market">
+        <span class="return-link">
+          <a [routerLink]="['/market', currentRole, currentService]" class="return-link__link" title="">
+            <svg-icon name="round-left"></svg-icon>
+          </a>
+          How many slots do you need?
+        </span>
+      </h1>
+
+      <div class="slot-selection">
+        <app-spinner [isShown]="(isOffersLoading$ | async)" [isAbsolute]="true"></app-spinner>
+
+        <ul class="row row--market4" *ngIf="offer" [@inOutAnimation]>
+          <li class="col col--market4">
+            <app-slot-input-control [plan]="offer.plan" [serviceName]="currentService" [serviceDescription]="serviceDescription" [errorMessage]="errorMessage" [freeSlotsCount]="offer.freeSlotsCount"
+                [control]="formSubscriberGroup.get('quantity')" [termsControl]="formSubscriberGroup.get('isAcceptedTerms')"
+                [terms]="terms[currentService]" [isSubmitDisabled]="isSubscriptionSubmitDisabled" [isAutoFocus]="true"
+                [isOffer]="false"
+                [owner]="offer.owner" (onSubmit)="handleSubscriptionFormSubmit()" [isLoading]="isSubscribeLoading$ | async">
+            </app-slot-input-control>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+
+  </div>
+</section>

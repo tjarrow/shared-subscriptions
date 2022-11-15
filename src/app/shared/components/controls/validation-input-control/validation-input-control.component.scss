@@ -1,0 +1,38 @@
+.input-control {
+  &__input {
+    &--icon-right {
+      padding-right: 48px;
+    }
+  }
+
+  &__extra-icon {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.3);
+    transition: opacity .25s ease, transform .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &--spinner {
+      &.input-control__extra-icon--shown {
+        animation: rotate 2s linear infinite;
+      }
+    }
+
+    &--check {
+      color: #22A199;
+      top: 20px;
+      right: 15px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &--shown {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

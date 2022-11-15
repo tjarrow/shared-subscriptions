@@ -1,0 +1,64 @@
+.history-nav {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  font-weight: 600;
+  line-height: 28px;
+
+  @include respond-to(md) {
+    margin: 0 10px;
+  }
+
+  &__button { // .history-nav__button
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: 5px;
+    padding: 0;
+    border-width: 0;
+    background-color: $color-transparent;
+    color: #353C41;
+    transition: color 0.2s;
+
+    &:disabled {
+      color: #707578;
+    }
+
+    &:hover {
+      color: #000;
+    }
+
+    &:disabled:hover {
+      color: #707578;
+    }
+
+    &--next { // .history-nav__button--next
+      transform: scaleX(-1);
+    }
+  }
+
+  &__value { // .history-nav__value
+    min-width: 144px;
+    padding-top: 1px;
+    text-align: center;
+  }
+
+  &__month { // .history-nav__month
+    font-size: 20px;
+    color: $color-blue;
+    letter-spacing: -0.04em;
+  }
+
+  &__separator { // .history-nav__separator
+    font-size: 12px;
+    color: #8A8E91;
+    letter-spacing: -0.04em;
+  }
+
+  &__year { // .history-nav__year
+    font-size: 10px;
+    color: #8A8E91;
+  }
+}

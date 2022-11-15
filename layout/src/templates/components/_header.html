@@ -1,0 +1,66 @@
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_mobile-menu.html" import mobileMenu %}
+
+{% macro header(isWhite = false, haveUserMenu = false) %}
+  <header class="header{{' header--white' if isWhite}}">
+    <div class="container container--header">
+      <a href="index.html" class="logo logo--header">
+        <img class="logo__image" src="images/logo.svg" alt="ShareIt">
+      </a>
+      {% if haveUserMenu %}
+        <div class="header__user-menu">
+          <a class="user-page" href="index.html">
+            {{ icon('market', class='icon--market') }}
+            Market
+          </a>
+          <a class="user-page user-page--active" href="index.html">
+            {{ icon('star', class='icon--star') }}
+            My Subscriptions
+          </a>
+          <div class="user-menu">
+            <img class="user-menu__photo" src="images/user.jpg" alt="Marica Jonatana">
+            <p class="user-menu__name">Marica Jonatana</p>
+            <button class="user-menu__toggle menu__toggle">
+              {{ icon('burger', class='icon--burger user-menu__burger') }}
+              {{ icon('cross', class='icon--cross user-menu__cross') }}
+            </button>
+            <nav class="menu menu--user-menu">
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="index.html" class="menu__link">
+                    <span class="menu__icon">
+                      {{ icon('user', class='icon--user') }}
+                    </span>
+                    Personal information
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="index.html" class="menu__link">
+                    <span class="menu__icon">
+                      {{ icon('card', class='icon--card') }}
+                    </span>
+                    Payment method
+                  </a>
+                </li>
+                <li class="menu__item">
+                  <a href="index.html" class="menu__link">
+                    <span class="menu__icon">
+                      {{ icon('logout', class='icon--logout') }}
+                    </span>
+                    Sign Out
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      {% else %}
+        <div class="header__user-actions">
+          <button class="button button--outline-black button--header" data-modal="sign-in">Sign In</button>
+          <button class="button button--black button--header" data-modal="sign-up">Sign Up</button>
+        </div>
+      {% endif %}
+    </div>
+  </header>
+  {{ mobileMenu() }}
+{% endmacro %}

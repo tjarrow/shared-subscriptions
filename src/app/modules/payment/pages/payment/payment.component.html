@@ -1,0 +1,37 @@
+<main class="page page--profile">
+  <section class="section section--profile">
+    <div class="container user-profile__container">
+      <h1 class="page__header" style="padding-left: 0;">
+        Payment Test
+      </h1>
+
+      <section class="profile-card profile-card--user">
+        <!-- <h2 class="profile-card__name">Test</h2> -->
+
+        <div style="display: flex; flex-direction: column;" [formGroup]="form">
+          <label *ngFor="let offer of offers">
+            <input type="radio" name="offerId" [value]="offer.id" formControlName="offerId" />
+            {{offer.plan.service.name}} {{offer.plan.name}} ({{offer.freeSlotsCount}} left)
+          </label>
+        </div>
+        <button class="button button--black button--profile-edit" [disabled]="form.invalid"
+          (click)="processSubscription()">Subscribe</button>
+      </section>
+
+      <ng-container *ngIf="subscriptions.length">
+        <h2 class="page__header" style="padding-left: 0;">My subscriptions</h2>
+        <section class="profile-card profile-card--change-password">
+          <div *ngFor="let item of subscriptions" style="display: flex; justify-content: space-between; width: 100%">
+            <span style="font-weight: 600;">
+              {{item.name}}
+            </span>
+            <span>
+              Created at: {{item.created_date | date:'MM/dd/yyyy'}}
+            </span>
+            <button class="button button--black" (click)="cancelSubscription(item.id)">Cancel</button>
+          </div>
+        </section>
+      </ng-container>
+    </div>
+  </section>
+</main>

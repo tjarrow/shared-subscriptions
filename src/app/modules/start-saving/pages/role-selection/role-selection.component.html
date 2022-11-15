@@ -1,0 +1,21 @@
+<section class="section section--market section--market1">
+  <div class="container">
+    <h1 class="page__header page__header--market">What would you like to do?</h1>
+    <div class="row row--market">
+      <div class="col col--market">
+        <div class="market-action">
+          <h2 class="market-action__title">I own a subscription</h2>
+          <p class="market-action__description">I want to share and start saving!</p>
+          <a [routerLink]="userRole.share" class="button button--blue button--saving market-action__button" title="">Share</a>
+        </div>
+      </div>
+      <div class="col col--market">
+        <div class="market-action">
+          <h2 class="market-action__title">I look for a co-shared plan</h2>
+          <p class="market-action__description">I want to subscribe!</p>
+          <a [routerLink]="userRole.subscribe" class="button button--blue button--saving market-action__button" title="">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

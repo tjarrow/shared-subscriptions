@@ -1,0 +1,17 @@
+<section class="modal modal_{{ size }}" (mousedown)="stopPropagation($event)" (mouseup)="stopPropagation($event)">
+  <!-- MODAL HEADER -->
+  <header *ngIf="title" class="modal__header">
+    <h2 class="modal__title" [innerHTML]="title"></h2>
+    <button class="modal__closer" (click)="closeModal()">
+      <svg-icon name="round-cross"></svg-icon>
+    </button>
+  </header>
+
+  <!-- MODAL BODY -->
+  <div class="modal__body">
+    <router-outlet></router-outlet>
+  </div>
+</section>
+
+<!-- scroll helper -->
+<div #scrollbarMeasure class="modal-scrollbar-measure"></div>

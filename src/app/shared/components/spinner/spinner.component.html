@@ -1,0 +1,11 @@
+<ng-container *ngIf="!isHiddenInDom">
+  <div class="spinner" [ngClass]="{'spinner--hidden': !isShown}" *ngIf="!isAbsolute">
+    <svg-icon name="spinner" class="spinner__icon"></svg-icon>
+  </div>
+
+  <section class="spinner__box" *ngIf="isAbsolute">
+    <div class="spinner spinner--static" [ngClass]="{'spinner--hidden': !isShown}">
+      <svg-icon name="spinner" class="spinner__icon"></svg-icon>
+    </div>
+  </section>
+</ng-container>

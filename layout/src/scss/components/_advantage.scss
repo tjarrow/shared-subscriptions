@@ -1,0 +1,50 @@
+.advantage {
+  text-align: center;
+
+  &__icon-wrapper { // .advantage__icon-wrapper
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 22px;
+
+    @include respond-to(md) {
+      min-height: 70px;
+      margin-bottom: 27px;
+    }
+  }
+
+    &__icon { // .advantage__icon
+    max-width: 100%;
+  }
+
+  &__title { // .advantage__title
+    margin-bottom: 17px;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+
+    @include respond-to(md) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__text { // .advantage__text
+    font-size: 18px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+
+    .advantage--big-text & {
+      font-size: 21px;
+      @include respond-to(md) {
+        font-size: 18px;
+      }
+      @include respond-to(lg) {
+        font-size: 21px;
+      }
+    }
+
+    @include respond-to(lg) {
+      font-size: 21px;
+    }
+  }
+}

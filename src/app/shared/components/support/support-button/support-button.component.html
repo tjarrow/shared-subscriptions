@@ -1,0 +1,7 @@
+<button class="chat" (click)="showModal($event)">
+  <svg-icon name="chat" class="icon icon--chat chat__icon"></svg-icon>
+</button>
+
+<app-support-form *ngIf="isSupportFormShown$ | async" class="modal modal--chat modal-chat"
+    (onCloseSupportForm)="handleCloseSupportForm()" [@inOutAnimation]>
+</app-support-form>

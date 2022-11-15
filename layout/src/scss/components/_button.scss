@@ -1,0 +1,316 @@
+.button {
+  display: inline-block;
+  padding: 15px 25px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+
+  @include respond-to(md) {
+    border-radius: 16px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &--blue { // .button--blue
+    background-color: $color-blue;
+    border-color: $color-blue;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($color-blue, 10%);
+      border-color: darken($color-blue, 10%);
+    }
+
+    &:disabled {
+      background-color: #54ACE8;
+      border-color: #54ACE8;
+      color: #CBE6F8;
+    }
+  }
+
+  &--black { // .button--black
+    background-color: $color-black;
+    border-color: $color-black;
+    color: #fff;
+
+    &:hover {
+      background-color: #000;
+      border-color: #000;
+    }
+  }
+
+  &--outline-black { // .button--outline-black
+    background-color: $color-transparent;
+    border-color: $color-black;
+    color: $color-black;
+
+    &:hover {
+      background-color: $color-black;
+      color: #fff;
+    }
+  }
+
+  &--red { // .button--red
+    background-color: $color-red;
+    border-color: $color-red;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($color-red, 10%);
+      border-color: darken($color-red, 10%);
+    }
+  }
+
+  &--transparent-black { // .button--transparent-black
+    background-color: $color-transparent;
+    border-color: $color-transparent;
+
+    &:hover {
+      background-color: $color-black;
+      border-color: $color-black;
+      color: #fff;
+    }
+  }
+
+  &--big { // .button--big
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 14px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      padding-top: 17px;
+      padding-bottom: 18px;
+      border-radius: 16px;
+      font-size: 21px;
+    }
+  }
+
+  &--header { // .button--header
+    min-width: 90px;
+    padding: 9px 10px 10px;
+    font-size: 12px;
+
+    @include respond-to(md) {
+      min-width: 128px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+
+    &:first-child {
+      margin-right: 12px;
+
+      @include respond-to(md) {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &--hero { // .button--hero
+    min-width: 172px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 14px;
+    font-size: 18px;
+
+    @include respond-to(lg) {
+      min-width: 192px;
+      padding-top: 17px;
+      padding-bottom: 18px;
+      border-radius: 16px;
+      font-size: 21px;
+    }
+  }
+
+  &--subscription { // .button--subscription
+    min-width: 178px;
+    font-size: 19px;
+  }
+
+  &--modal-submit { // .button--modal-submit
+    display: block;
+    width: 174px;
+    margin: 0 auto;
+    margin-bottom: 28px;
+    padding: 19px 25px;
+    font-size: 18px;
+  }
+
+  &--reset-password { // .button--reset-password
+    min-width: 174px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 600;
+
+    @include respond-to(md) {
+      padding: 20px 24px;
+    }
+  }
+
+  &--saving { // .button--saving
+    min-width: 154px;
+    padding: 13px 25px 13px;
+    font-size: 18px;
+    border-radius: 16px;
+
+    @include respond-to(md) {
+      min-width: 160px;
+      padding: 15px 25px 16px;
+    }
+  }
+
+  &--get-support { // .button--get-support
+    min-width: 170px;
+    padding: 17px 14px;
+    letter-spacing: -0.02em;
+
+    @include respond-to(md) {
+      min-width: 0;
+      padding: 16px 14px;
+    }
+  }
+
+  &--submit-slot { // .button--submit-slot
+    min-width: 176px;
+    padding: 16px 25px 17px;
+    font-size: 19px;
+  }
+
+  &--blue-close { // .button--blue-close
+    min-width: 17px;
+    margin-bottom: 32px;
+    padding: 16px 25px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      min-width: 174px;
+      margin-bottom: 32px;
+      padding: 20px 25px;
+    }
+  }
+
+  &--add-subscription { // .button--add-subscription
+    min-width: 140px;
+    margin-top: 45px;
+    padding: 14px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 23px;
+    letter-spacing: normal;
+    color: #FFFFFF !important;
+
+    @include respond-to(md) {
+      margin-top: 0;
+      margin-left: 23px;
+    }
+  }
+
+  &--cancel-subscription { // .button--cancel-subscription
+    min-width: 178px;
+    font-size: 19px;
+  }
+
+  &--half { // .button--half
+    flex-grow: 1;
+    max-width: calc(50% - 10px);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 18px;
+
+    @include respond-to(md) {
+      padding-top: 19px;
+      padding-bottom: 19px;
+    }
+  }
+
+  &--chat-submit { // .button--chat-submit
+    display: block;
+    width: 90px;
+    margin-left: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      width: 128px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 16px;
+    }
+  }
+
+  &--profile-edit { // .button--profile-edit
+    min-width: 119px;
+    padding: 12px 22px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      min-width: 128px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+  }
+
+  &--change-password { // .button--change-password
+    padding: 12px 22px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      min-width: 180px;
+      padding: 15px 10px 16px;
+      background-color: $color-transparent;
+      font-size: 16px;
+      color: $color-black;
+
+      &:hover {
+        background-color: $color-black;
+        color: #fff;
+      }
+    }
+  }
+
+  &--profile-header { // .button--profile-header
+    margin-top: 22px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 14px;
+
+    @include respond-to(md) {
+      margin-top: 0;
+      margin-left: 23px;
+      padding: 15px 25px 16px;
+      font-size: 16px;
+    }
+  }
+
+  &--card-add { // .button--card-add
+    padding: 11px 16px 12px;
+
+    @include respond-to(md) {
+      padding: 15px 16px 16px;
+    }
+  }
+
+  &--profile-payment-method { // .button--profile-payment-method
+    margin-top: 26px;
+    padding: 12px 30px 12px;
+
+    @include respond-to(md) {
+      margin-top: 0;
+      padding: 15px 25px 16px;
+    }
+  }
+}
+

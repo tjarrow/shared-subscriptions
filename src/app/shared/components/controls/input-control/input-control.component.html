@@ -1,0 +1,8 @@
+<section class="input-control" [ngClass]="{'input-control--error': isErrored}">
+  <div class="input-control__wrapper">
+    <input #input [type]="type" class="input-control__input" [formControl]="control" [attr.disabled]="disabled ? 'disabled' : null"
+        [attr.readonly]="(isAutocompleteOff && makeItReadonly) ? 'readonly' : null" (focus)="handleFocus()">
+    <label class="input-control__label" [ngClass]="{'input-control__label--active': isFocused}">{{label}}</label>
+    <span *ngIf="message" class="input-control__message">{{message}}</span>
+  </div>
+</section>

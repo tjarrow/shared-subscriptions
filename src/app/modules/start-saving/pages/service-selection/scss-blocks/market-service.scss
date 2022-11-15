@@ -1,0 +1,49 @@
+.market-service {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 162px;
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  transition: transform 0.2s;
+  color: $color-black;
+  text-decoration: none;
+
+  @include respond-to(md) {
+    min-height: 212px;
+  }
+
+  &--with-price { // .market-service--with-price
+    min-height: 295px;
+
+    @include respond-to(md) {
+      min-height: 295px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
+  &__img { // .market-service__img
+    max-width: 100%;
+
+    .market-service--with-price & {
+      margin-bottom: 36px;
+      max-height: 64px;
+    }
+
+    @include respond-to(md) {
+      transform: translateY(-10px);
+
+      .market-service--with-price & {
+        transform: none;
+      }
+    }
+  }
+}

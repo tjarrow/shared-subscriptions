@@ -1,0 +1,15 @@
+$color-transparent: rgba(#fff, 0);
+$color-blue: #0a88dd;
+$color-black: #353c41;
+$color-red: #d81f26;
+$color-green: #22a199;
+$color-light-gray: #f9f9f9;
+$color-yellow: #ffc813;
+
+$breakpoints: (
+  'xs': 378px,
+  'sm':  490px,
+  'md': 767px,
+  'lg':  992px,
+  'xl': 1200px
+);

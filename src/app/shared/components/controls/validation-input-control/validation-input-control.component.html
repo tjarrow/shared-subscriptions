@@ -1,0 +1,17 @@
+<section class="input-control" [ngClass]="{'input-control--error': isErrored}">
+  <div class="input-control__wrapper">
+    <input #input [type]="type" class="input-control__input" [formControl]="control" [attr.disabled]="disabled ? 'disabled' : null"
+        [attr.readonly]="(isAutocompleteOff && makeItReadonly) ? 'readonly' : null" (focus)="handleFocus()"
+        [ngClass]="{'input-control__input--icon-right': isChecking||isChecked}">
+
+    <label class="input-control__label" [ngClass]="{'input-control__label--active': isFocused}">{{label}}</label>
+
+    <span *ngIf="message" class="input-control__message">{{message}}</span>
+
+    <svg-icon name="spinner" class="input-control__extra-icon input-control__extra-icon--spinner"
+        [ngClass]="{'input-control__extra-icon--shown': isChecking}"></svg-icon>
+
+    <svg-icon name="check" class="input-control__extra-icon input-control__extra-icon--check"
+      [ngClass]="{'input-control__extra-icon--shown': isChecked}"></svg-icon>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{% from "templates/components/_icon.html" import icon %}
+
+<div class="chat">
+  <button class="chat__button" data-modal="chat">
+    {{icon(name="chat", class="icon--chat")}}
+  </button>
+  {% include "./modals/_modal--chat.html" %}
+  <div class="chat__success-message">
+    <div class="chat__success-message-icon">
+      {{ icon(name="alert-plane", class="icon--chat-plane") }}
+    </div>
+    <p class="chat__success-message-text">The message successfully sent. Thank you!</p>
+  </div>
+</div>

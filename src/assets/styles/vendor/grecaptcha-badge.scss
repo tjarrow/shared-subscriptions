@@ -1,0 +1,12 @@
+.grecaptcha-badge {
+  right: auto !important;
+  z-index: 5001;
+  left: 14px;
+
+  &_hide {
+    opacity: 0;
+    pointer-events: none;;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}

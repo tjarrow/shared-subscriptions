@@ -1,0 +1,61 @@
+<section class="profile-card profile-card--user" *ngIf="(userInfo$ | async) as user">
+  <div class="profile-card__photo-wrapper" [ngClass]="{'profile-card__photo-wrapper--loading': isAvatarLoading$ | async}">
+      <i *ngIf="user.userAvatarId; else avatarPlaceholder"
+        [ngStyle]="{'background-image': 'url(' + apiUrl + '/users/logo/' + user.userAvatarId + ')'}" class="user-avatar profile-card__photo"
+        title="{{ user.firstName }} {{ user.lastName }}">
+      </i>
+
+      <ng-template #avatarPlaceholder>
+        <span class="user-avatar user-avatar--no-photo profile-card__photo">
+          {{ user.firstName[0] }}{{ user.lastName[0] }}
+        </span>
+      </ng-template>
+
+    <button class="profile-card__photo-button" (click)="handleOpenAvatarMenu($event)">
+      <svg-icon name="dots" class="icon--dots"></svg-icon>
+    </button>
+
+    <nav class="menu" [ngClass]="{'menu--opened': isAvatarMenuOpened}">
+      <ul class="menu__list">
+        <li class="menu__item">
+          <label class="menu__link">
+            <app-file-input-control [control]="fileFormGroup.get('avatar')" (onChange)="handleFileInputChange($event)" class="menu__hidden-input"></app-file-input-control>
+            <ng-container *ngIf="!user.userAvatarId; else changeAvatar">
+              <span class="menu__icon">
+                <svg-icon name="upload" class="icon--upload"></svg-icon>
+              </span>
+              Upload
+            </ng-container>
+            <ng-template #changeAvatar>
+              <span class="menu__icon">
+                <svg-icon name="brush" class="icon--change"></svg-icon>
+              </span>
+              Change
+            </ng-template>
+          </label>
+        </li>
+
+        <li class="menu__item">
+          <a (click)="handleDeleteAvatar($event, !user.userAvatarId)" class="menu__link" title="" [ngClass]="{'menu__link--disabled': !user.userAvatarId}">
+            <span class="menu__icon">
+              <svg-icon name="delete" class="icon--delete"></svg-icon>
+            </span>
+            Delete
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <svg-icon name="spinner" class="personal-info__loader" [ngClass]="{'personal-info__loader--shown': (isAvatarLoading$ | async)}"></svg-icon>
+  </div>
+  <h2 class="profile-card__name">{{user.firstName}} {{user.lastName}}</h2>
+  <a class="profile-card__email" href="mailto:maricaj@gmail.com">{{user.email}}</a>
+  <button class="button button--black button--profile-edit" (click)="handleEditUserDetails()">Edit</button>
+</section>
+
+<section class="profile-card profile-card--change-password">
+  <app-input-control label="Password" [control]="formGroup.get('password')" type="password"
+      [disabled]="true" class="personal-info__user-password">
+  </app-input-control>
+  <button class="button button--black button--change-password" (click)="handleChangePassword()">Change Password</button>
+</section>

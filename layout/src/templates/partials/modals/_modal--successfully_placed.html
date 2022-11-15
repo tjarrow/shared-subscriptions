@@ -1,0 +1,25 @@
+{% from "templates/components/_icon.html" import icon %}
+
+<!-- Modal Successfully Placed -->
+<div class="modal modal--successfully-placed">
+		<div class="modal__card">
+				<div class="modal__header">
+					<h2 class="modal__title">Successfully Placed</h2>
+					<button class="modal__close">
+            {{ icon(name="modal-close") }}
+          </button>
+				</div>
+				<div class="modal__body">
+          <div class="modal__wrapper">
+            <span class="modal__successfully-placed">
+              {{ icon(name="check", class="icon--successfully-placed") }}
+            </span>
+            <h3 class="modal__text modal__text--big">Congratulations!</h3>
+            <p class="modal__text">Your pre–authorization information has been validated!</p>
+            <p class="modal__text text-green">No charge has been made on your credit card.</p>
+            <p class="modal__text">You will be charged when the Admin accepts your request.</p>
+          </div>
+          <button class="button button--blue button--blue-close js-modal-close">Close</button>
+				</div>
+		</div>
+</div>

@@ -1,0 +1,25 @@
+{% from "templates/components/_icon.html" import icon %}
+
+{% macro planCard(logoImage, price, counter, userPhoto, userName, planType, class) %}
+  <a href="market7.html" class="plan-card{{' '+ class if class}}">
+    <p class="counter counter--plan-card plan-card__counter">
+      <span class="counter__number">{{counter}}</span>
+      <span class="counter__separator">/</span>
+      <span class="counter__total"><span class="counter__total-words">slots<br>left</span></span>
+    </p>
+    <img src="images/users/{{userPhoto}}" alt="" class="plan-card__user-photo">
+    <p class="plan-card__user-name">{{userName}}</p>
+    <div class="plan-card__logo-wrapper">
+      <img src="images/services/{{logoImage}}" alt="" class="plan-card__logo">
+    </div>
+    <p class="plan-card__plan-type">{{planType}}</p>
+    <div class="price price--small plan-card__price">
+      <p class="price__title">Price</p>
+      <div class="price__wrapper">
+        <span class="price__small">S<span class="price__dollar">$</span></span>
+        {{price}}
+        <span class="price__small">/ mo</small>
+      </div>
+    </div>
+  </a>
+{% endmacro %}

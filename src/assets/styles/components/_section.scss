@@ -1,0 +1,286 @@
+.section {
+  position: relative;
+  z-index: 1;
+
+  &--hero { // .section--hero
+    padding-top: 138px;
+    padding-bottom: 51px;
+
+    @include respond-to(md) {
+      padding-top: 78px;
+    }
+  }
+
+  &--subscription { // .section--subscription
+    z-index: 5;
+    padding-top: 100px;
+    min-height: 590px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--advantages { // .section--advantages
+    margin-top: -90px;
+    padding-top: 237px;
+    padding-bottom: 100px;
+    overflow: hidden;
+
+    @include respond-to(md) {
+      padding-top: 157px;
+    }
+
+    &::before { // TODO Comment it - it should be named/described
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 50%;
+      width: 240%;
+      height: 150%;
+      background-image: url('../../images/ellipse_mobile.svg');
+      background-size: 100% 100%;
+      background-position: center top;
+      background-repeat: no-repeat;
+      content: '';
+      transform: translateX(-50%);
+
+      @include respond-to(md) {
+        width: 100%;
+        height: 110%;
+        background-image: url('../../images/ellipse.svg');
+      }
+    }
+  }
+
+  &--ellipse { // .section--ellipse
+    margin-top: -150px;
+    padding-top: 159px;
+    padding-bottom: 68px;
+    text-align: center;
+    overflow: hidden;
+
+    @include respond-to(md) {
+      padding-top: 151px;
+      padding-bottom: 91px;
+    }
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 50%;
+      width: 240%;
+      height: 150%;
+      background-image: url('../../images/ellipse_dark_mobile.svg');
+      background-size: 130% 200%;
+      background-position: center top;
+      background-repeat: no-repeat;
+      content: '';
+      transform: translateX(-50%);
+
+      @include respond-to(md) {
+        width: 150%;
+        height: 110%;
+        background-image: url('../../images/ellipse_dark.svg');
+      }
+    }
+  }
+
+  &--ellipse-with-image { // .section--ellipse-with-image
+    position: relative;
+    margin-top: 0;
+    padding-top: 190px;
+
+    &::before {
+      top: 40px;
+    }
+
+    @include respond-to(md) {
+      margin-top: 0;
+      padding-top: 210px;
+
+      &::before {
+        top: 59px;
+      }
+    }
+  }
+
+  &--faq { // .section--faq
+    padding-top: 37px;
+    padding-bottom: 124px;
+  }
+
+  &--market { // .section--market
+    padding-top: 38px;
+    padding-bottom: 0;
+    position: relative;
+    z-index: 2;
+
+    @include respond-to(md) {
+      padding-top: 37px;
+      padding-bottom: 39px;
+    }
+  }
+
+  &--market1 { // .section--market1
+    padding-top: 34px;
+    padding-bottom: 0;
+
+    @include respond-to(md) {
+      padding-top: 139px;
+      padding-bottom: 200px;
+    }
+  }
+
+  &--profile { // .section--profile
+    padding-top: 34px;
+    padding-bottom: 0;
+
+    @include respond-to(md) {
+      padding-top: 37px;
+      padding-bottom: 37px;
+    }
+  }
+
+  &--terms { // .section--terms
+    padding-top: 60px;
+    padding-bottom: 130px;
+  }
+
+  &__header { // .section__header
+    margin-bottom: 51px;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    text-align: center;
+
+    @include respond-to(md) {
+      margin-bottom: 40px;
+      font-size: 38px;
+    }
+
+    .section--hero & {
+      margin-bottom: 27px;
+      font-size: 30px;
+      text-align: left;
+
+      @include respond-to(sm) {
+        text-align: center;
+      }
+
+      @include respond-to(md) {
+        margin-bottom: 22px;
+        font-size: 40px;
+        text-align: left;
+      }
+
+      @include respond-to(lg) {
+        font-size: 50px;
+      }
+    }
+
+    .section--ellipse & {
+        margin-bottom: 28px;
+        font-size: 24px;
+        line-height: 29px;
+        letter-spacing: -0.04em;
+
+      @include respond-to(md) {
+        margin-bottom: 15px;
+        font-size: 28px;
+        line-height: 34px;
+      }
+    }
+  }
+
+  &__description { // .section__description
+    margin-bottom: 36px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+
+    @include respond-to(md) {
+      margin-bottom: 32px;
+      font-size: 24px;
+    }
+
+    .section--hero & {
+      @include respond-to(md) {
+        font-size: 20px;
+      }
+
+      @include respond-to(lg) {
+        font-size: 24px;
+      }
+    }
+
+    .section--ellipse & {
+      margin-bottom: 31px;
+      font-size: 20px;
+      line-height: 27px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+
+      @include respond-to(md) {
+        margin-bottom: 23px;
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  &__wrapper { // .section__wrapper
+    &--market {
+      position: relative;
+      margin-bottom: 35px;
+      padding-bottom: 35px;
+      text-align: center;
+      transition: margin-bottom .2s, padding-bottom .2s;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100%;
+        max-width: 1032px;
+        height: 1px;
+        background-color: #C8CDCF;
+        content: '';
+        transform: translateX(-50%);
+        transition: opacity .2s;
+      }
+    }
+
+    &--hidden {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+      height: 0;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__image { // .section__image
+    max-width: 100%;
+
+    .section--market6 & {
+      width: 241px;
+    }
+
+    .section--ellipse-with-image & {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include respond-to(md) {
+        left: calc(50% + 24px)
+      }
+    }
+  }
+}

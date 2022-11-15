@@ -1,0 +1,8 @@
+<label class="checkbox" [ngClass]="{'checkbox--error': isErrored, 'checkbox--disabled': disabled}">
+  <input class="checkbox__input" type="checkbox" [formControl]="control">
+  <div class="checkbox__data">
+    <svg-icon name="check-rounded" class="checkbox__check"></svg-icon>
+    <ng-content></ng-content>
+  </div>
+</label>
+

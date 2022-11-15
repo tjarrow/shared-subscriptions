@@ -1,0 +1,7 @@
+<div class="textarea-control" [ngClass]="{'textarea-control--error': isErrored}">
+  <div class="textarea-control__wrapper">
+    <textarea #input [formControl]="control" [attr.disabled]="disabled ? 'disabled' : null"
+        class="textarea-control__input" [placeholder]="label"></textarea>
+    <span *ngIf="message" class="textarea-control__message">{{message}}</span>
+  </div>
+</div>

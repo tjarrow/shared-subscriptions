@@ -1,0 +1,27 @@
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_form-group.html" import formGroup %}
+
+<!-- Modal Chat -->
+<div class="modal modal--chat">
+		<div class="modal__card">
+				<div class="modal__header">
+					<h2 class="modal__title">How can we help you?</h2>
+					<button class="modal__close">
+            {{ icon(name="modal-close") }}
+          </button>
+				</div>
+        <div class="alert alert--error">
+          <div class="alert__icon">
+            {{icon(name="alert-error")}}
+          </div>
+          <p class="alert__text">Server didn't respond<br>HTTP Error 500.</p>
+        </div>
+				<div class="modal__body">
+          <form action="index.html">
+            {{ formGroup(inputType="email", labelText="Your email", value="pavel@", errorText="Email is not correct") }}
+            {{ formGroup(inputType="textarea") }}
+            <button class="button button--blue button--chat-submit" type="submit">Send</button>
+          </form>
+				</div>
+		</div>
+</div>

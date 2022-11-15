@@ -1,0 +1,12 @@
+@import 'styles/vars/base';
+
+@import './scss-blocks/tabs';
+
+.user-profile {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+}

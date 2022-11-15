@@ -1,0 +1,42 @@
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 45px;
+  padding-left: 0;
+
+  @include respond-to(md) {
+    margin-bottom: 34px;
+  }
+
+  &__item { // .tabs__item
+    display: inline-block;
+    padding: 0 9px;
+
+    @include respond-to(md) {
+      padding: 0 17px;
+    }
+  }
+
+  &__link { // .tabs__link
+    display: flex;
+    padding: 10px 12px 11px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-black;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 3px solid $color-transparent;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s,color 0.2s;
+
+    @include respond-to(md) {
+      padding-bottom: 18px;
+      font-size: 18px;
+    }
+
+    &--active { // .tabs__link--active
+      border-color: #FE9200;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_form-group.html" import formGroup %}
+
+<!-- Modal Sign In -->
+<div class="modal modal--sign-in">
+		<div class="modal__card">
+				<div class="modal__header">
+					<h2 class="modal__title">Sign In</h2>
+					<button class="modal__close">
+            {{ icon(name="modal-close") }}
+          </button>
+				</div>
+        <div class="alert alert--error">
+          <div class="alert__icon">
+            {{icon(name="alert-error")}}
+          </div>
+          <p class="alert__text">Email is not verified. Check your mailbox. <u>Resend verification email</u>.</p>
+        </div>
+				<div class="modal__body">
+          <div class="modal__wrapper modal__wrapper--brand-buttons">
+            <button class="brand-button brand-button--google">{{icon(name="google-logo", class="brand-button__icon")}}Sign In with Google</button>
+            <button class="brand-button brand-button--facebook">{{icon(name="facebook-logo", class="brand-button__icon")}}Sign In with Facebook</button>
+          </div>
+          <div class="separator"><span class="separator__text">or</span></div>
+          <form action="index.html">
+            {{ formGroup(inputType="email", labelText="Email", value="pavel@", errorText="Email or password is not correct") }}
+            {{ formGroup(inputType="password", labelText="Password") }}
+            <div class="modal__wrapper modal__wrapper--remember">
+              <div class="checkbox">
+                <input class="checkbox__input" type="checkbox" id="si-remember">
+                <label class="checkbox__label" for="si-remember">
+                  {{ icon(name="check", class="checkbox__check") }}
+                  Remember me on this device
+                </label>
+              </div>
+            </div>
+            <button class="button button--blue button--modal-submit" type="submit">Sign In</button>
+          </form>
+          <p class="modal__text"><a class="modal__link" href="#" data-modal="forgot-password">Forgot password?</a></p>
+          <p class="modal__text">Do not have an account? <a class="modal__link" href="#" data-modal="sign-up">Sign Up</a></p>
+				</div>
+		</div>
+</div>

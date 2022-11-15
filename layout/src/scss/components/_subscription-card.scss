@@ -1,0 +1,205 @@
+.subscription-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 73px 17px 39px;
+  border: 1px solid #ebecec;
+  border-radius: 16px;
+  background-image: url('../images/subscribe_card_bg.svg');
+  background-size: auto;
+  background-position: center -5px;
+  background-repeat: no-repeat;
+  box-shadow: 0 5px 7px rgba(#000, .04);
+  color: $color-black;
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
+
+  &__counter-top { // .subscription-card__counter-top
+    position: absolute;
+    top: 14px;
+    right: 6px;
+    margin-bottom: 0;
+
+    .subscription-card--type3 & {
+      right: 20px;
+    }
+
+    .subscription-card--type4 & {
+      right: 11px;
+    }
+  }
+
+  &__logo-wrapper { // .subscription-card__logo-wrapper
+    height: 79px;
+    margin-bottom: 18px;
+
+    .subscription-card--type2 & {
+      margin-bottom: 0;
+    }
+
+    .subscription-card--type3 & {
+      margin-bottom: 10px;
+    }
+
+    .subscription-card--type4 & {
+      margin-bottom: 8px;
+    }
+
+    .subscription-card--type5 & {
+      margin-bottom: 0;
+    }
+  }
+
+  &__logo { // .subscription-card__logo
+    width: 100%;
+      max-width: 215px;
+    max-height: 100%;
+
+    .subscription-card--type3 & {
+      max-width: 260px;
+    }
+
+    .subscription-card--type4 & {
+      max-width: 291px;
+    }
+
+    .subscription-card--type5 & {
+      max-width: 240px;
+    }
+  }
+
+  &__type { // .subscription-card__type
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+
+    .subscription-card--type4 & {
+      margin-bottom: 9px;
+      font-size: 14px;
+      color: #868A8D;
+    }
+
+    .subscription-card--type5 & {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__description { // .subscription-card__description
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #5D6367;
+
+    .subscription-card--type3 & {
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .subscription-card--type4 & {
+      margin-bottom: 11px;
+    }
+  }
+
+  &__tab-box { // .subscription-card__tab-box
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 27px;
+    padding: 3px;
+    background-color: $color-light-gray;
+    border-radius: 20px;
+  }
+
+  &__tab{ // .subscription-card__tab
+    min-width: 126px;
+    padding: 12px;
+    border-width: 0;
+    border-radius: 18px;
+    background-color: $color-transparent;
+    font-size: 19px;
+    font-weight: 600;
+    color: #717679;
+    letter-spacing: -0.02em;
+    text-align: center;
+    transition: background-color 0.2s, color 0.2s;
+
+    &--active { // .subscription-card__tab--active
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgba(#000, .09);
+      color: $color-black;
+    }
+  }
+
+  &__text { // .subscription-card__text
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #868a8d;
+    text-align: center;
+  }
+
+  &__quantity { // .subscription-card__quantity
+    margin-bottom: 31px;
+  }
+
+  &__price { // .subscription-card__price
+    margin-bottom: 31px;
+
+    .subscription-card--type2 & {
+      margin-bottom: 6px;
+    }
+
+    .subscription-card--type3 & {
+      margin-bottom: 26px;
+    }
+
+    .subscription-card--type4 & {
+      margin-bottom: 25px;
+    }
+
+    .subscription-card--type5 & {
+      margin-bottom: 17px;
+    }
+  }
+
+  &__content { // .subscription-card__content
+    display: none;
+
+    &--active { // .subscription-card__active
+      display: block;
+    }
+  }
+
+  &__owner { // .subscription-card__owner
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 27px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5D6367;
+  }
+
+  &__owner-photo { // .subscription-card__owner-photo
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+
+  &__checkbox { // .subscription-card__checkbox
+    margin-bottom: 28px;
+  }
+
+  &__label { // .subscription-card__label
+    position: absolute;
+    top: 16px;
+    left: -8px;
+  }
+}

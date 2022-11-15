@@ -1,0 +1,24 @@
+<section class="section section--market section--market6">
+  <div class="container">
+    <h1 class="page__header page__header--with-button">
+        <span class="return">
+          <a href="market.html" class="return__link"></a>
+          My Subscriptions
+        </span>
+      <a (click)="navigateToMarket()" class="button button--blue button--add-subscription">Add New</a>
+    </h1>
+  </div>
+</section>
+<app-subscriptions-list-offer-item [subscriptionOffers]="subscriptionOffers"></app-subscriptions-list-offer-item>
+<app-subscriptions-list-item [subscriptions]="subscriptions"></app-subscriptions-list-item>
+<ng-container *ngIf="!subscriptions?.length || !subscriptionOffers?.length">
+  <section class="section section--ellipse subscription-offer-card__empty-page-background">
+    <div *ngIf="!isLoading$" class="container">
+      <img src="assets/images/tablets.svg" alt="" class="subscription-offer-card__tablets-img">
+      <h2 class="section__header">You have not any subscriptions yet.</h2>
+      <p class="section__description">Share your subscriptions among our friendly community or subscribe</p>
+      <a href="index.html" class="button button--black button--get-support">Let’s go!</a>
+    </div>
+  </section>
+</ng-container>
+

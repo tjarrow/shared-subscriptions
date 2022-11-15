@@ -1,0 +1,57 @@
+<div class="alert alert--error" *ngIf="(loginError$ | async) && (loginError$ | async).error && (loginError$ | async).error.statusCode != 401">
+  <div class="alert__icon">
+    <svg-icon name="attention"></svg-icon>
+  </div>
+  <p class="alert__text">{{ (loginError$ | async).message }}
+    <!-- <u title="" class="alert__link" tabindex="0"
+        (click)="handleResendVerificationEmail($event)"
+        (keydown.enter)="handleResendVerificationEmail($event)"
+        (keydown.space)="handleResendVerificationEmail($event)">Resend verification email</u>. -->
+  </p>
+</div>
+
+<div class="alert alert--success" *ngIf="registerSuccess$ | async">
+  <div class="alert__icon">
+    <svg-icon name="check"></svg-icon>
+  </div>
+  <p class="alert__text">You are successfully signed up. <br>Sign in, please.</p>
+</div>
+
+<div class="brand-button__box" [ngClass]="{'brand-button__box--disabled': isLoginLoading$ | async}">
+  <button class="brand-button brand-button--google" (click)="handleSignInViaGoogle($event)">
+    <svg-icon name="google" class="brand-button__icon"></svg-icon>
+    Sign In with Google
+  </button>
+  <button class="brand-button brand-button--facebook" (click)="handleSignInViaFacebook($event)">
+    <svg-icon name="facebook-lg" class="brand-button__icon"></svg-icon>
+    Sign In with Facebook
+  </button>
+</div>
+<div class="separator"><span class="separator__text">or</span></div>
+
+
+<form #form [formGroup]="formGroup" (submit)="handleFormSubmit($event)">
+  <app-input-control label="Email" [control]="formGroup.get('email')" [isErrored]="isEmailInvalid || ((loginError$ | async) && (loginError$ | async).error && (loginError$ | async).error.statusCode == 401)"
+      [isAutoFocus]="true" [disabled]="isLoginLoading$ | async" type="email"
+      [message]="isEmailInvalid ? 'Email is not correct' : (((loginError$ | async) && (loginError$ | async).error && (loginError$ | async).error.statusCode == 401)? 'Email or password is not correct' : '') "></app-input-control>
+
+  <app-password-control label="Password" [control]="formGroup.get('password')" [disabled]="isLoginLoading$ | async"
+      [isErrored]="isPasswordInvalid || ((loginError$ | async) && (loginError$ | async).error && (loginError$ | async).error.statusCode == 401)"
+      [message]="isPasswordInvalid ? 'Password is required' : '' "></app-password-control>
+
+  <button class="button button--blue button--modal-submit" [ngClass]="{'button--loading': isLoginLoading$ | async}" [attr.disabled]="!isSubmitEnabled ? 'disabled' : null" type="submit">Sign In</button>
+</form>
+
+<p class="modal__text">
+  <span (click)="handleForgotPassword($event)" class="modal__link" [ngClass]="{'modal__link--loading': isLoginLoading$ | async}" tabindex="0" title="">
+    Forgot your password?
+  </span>
+</p>
+
+<p class="modal__text">
+  Don't have an account?
+  <span (click)="handleSignUp($event)" class="modal__link" [ngClass]="{'modal__link--loading': isLoginLoading$ | async}" tabindex="0" title="">
+    Sign Up
+  </span>
+</p>
+

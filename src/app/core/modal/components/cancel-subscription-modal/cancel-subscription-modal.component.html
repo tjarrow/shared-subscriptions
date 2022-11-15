@@ -1,0 +1,10 @@
+<div class="alert alert--error alert--no-icon">
+  <p class="alert__text">Please note that deleting the subscription will automatically cut off the withdrawals from your subscribers!</p>
+</div>
+<div class="modal__body">
+  <p class="modal__text">You can create a new subscription at any time.</p>
+  <div class="modal__wrapper modal__wrapper--two-buttons">
+    <button (click)="confirmSubscriptionCancelling()" class="button button--red button--half js-modal-close">Confirm</button>
+    <button (click)="handleCloseClick()" class="button button--outline-black button--half js-modal-close">Close</button>
+  </div>
+</div>

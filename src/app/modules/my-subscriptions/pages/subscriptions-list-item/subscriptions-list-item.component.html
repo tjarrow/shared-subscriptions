@@ -1,0 +1,44 @@
+<ul class="row row--market2">
+  <li class="col col--market5" *ngFor="let subscription of subscriptions; let subscriptionIndex = index">
+    <a [routerLink]="subscription.slot.offer.plan.service.name | lowercase | snakeCase" class="market-service market-service--with-price">
+      <div class="subscription-offer-card__header-wrapper">
+        <div class="subscription-offer-card__ownership-label subscription-offer-card__ownership-label--green">Subscriber</div>
+        <div class="subscription-card__decor-box subscription-offer-card__decor-box-shadowed">
+          <span class="subscription-card__decor"></span>
+        </div>
+        <div class="subscription-offer-card__status">{{mySubscriptionsService.getSubscriptionStatus(subscription.slot.status)}}</div>
+      </div>
+      <img class="subscription-offer-card__card-img" src="{{mySubscriptionsService.getOfferServiceImg(subscription.slot.offer.plan.service)}}"
+           [alt]="subscription.slot.offer.plan.service.name">
+      <div class="subscription-offer-card__plan-name">{{subscription.slot.offer.plan.name}}</div>
+      <div class="price">
+        <p class="price__title">Price from:</p>
+        <div class="price__wrapper">
+          <span class="price__small">S<span class="price__dollar">$</span></span>
+          {{ subscription.slot.offer.plan.buyerCostPrice | getSinglePlanPrice }}
+          <span class="price__small">/mo
+              </span></div>
+      </div>
+      <div class="subscription-offer-card__subscribers-title">Subscribers</div>
+      <div class="subscription-offer-card__subscribers-block">
+        <div *ngFor="let slot of subscription.slot.offer.slots.slice(0, mySubscriptionsService.maxSubscribersNumberToDisplay); let subscriptionSlotIndex = index">
+            <span id="{{subscriptionSlotIndex}}" *ngIf="mySubscriptionsService.currentSubscriptionSlotIndex === subscriptionSlotIndex &&
+            mySubscriptionsService.currentSubscriptionIndex === subscriptionIndex && slot.buyer" class="subscription-offer-card__subscriber-name-prompt">
+              {{mySubscriptionsService.getSubscriberName(slot)}}
+            </span>
+            <div [ngStyle]="{'background-image': 'url(mySubscriptionsService.getSubscriberImg(slot))'}"
+                (mouseover)="mySubscriptionsService.getCurrentSubscriptionAndSlotIndices(subscriptionSlotIndex, subscriptionIndex)"
+                (mouseleave)="mySubscriptionsService.currentSubscriptionIndex = null"
+                class="subscription-offer-card__subscriber-img">
+            </div>
+        </div>
+        <span class="subscription-offer-card__current-subs-num">{{mySubscriptionsService.displayCurrentNumberOfSubscribers(subscription.slot.offer.slots)}}</span>
+        <span class="subscription-offer-card__total-subs-num">/{{subscription.slot.offer.slots.length}}</span>
+      </div>
+      <button [disabled]="mySubscriptionsService.getSubscriptionStatus(subscription.slot.status) == 'On Hold'"
+              class="subscription-offer-card__cancel-btn"
+              (click)="mySubscriptionsService.openCancelSubscriptionModal(subscription.id, 0)"
+      >Cancel</button>
+    </a>
+  </li>
+</ul>

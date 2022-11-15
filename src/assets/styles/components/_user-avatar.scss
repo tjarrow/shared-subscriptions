@@ -1,0 +1,32 @@
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex: none;
+  background-color: #DAEDFA;
+  background-size: cover;
+  background-position: center;
+
+  @include respond-to(md) {
+    width: 50px;
+    height: 50px;
+    margin-right: 14px;
+  }
+
+  &--no-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-blue;
+    box-shadow: inset 0px 0px 22px rgba(0, 0, 0, 0.04);
+  }
+
+  &--xs {
+    font-size: 11px;
+    font-weight: 700;
+  }
+}

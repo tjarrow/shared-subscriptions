@@ -1,0 +1,58 @@
+<section class="profile-card" [class.profile-card--payment-method-add]="!(source$ | async)" [class.profile-card--payment-method]="!!(source$ | async)">
+  <div class="profile-card__header">
+    <h2 class="profile-card__title">Payment Method</h2>
+    <button *ngIf="source$| async" class="button button--black button--profile-payment-method" data-row="3" (click)="changePaymentSource()">Change</button>
+  </div>
+  <ul class="row row--user-card">
+    <li class="col">
+      <div *ngIf="!(source$ | async)" class="credit-card credit-card--active">
+        <input type="text" class="credit-card__card-number" placeholder="**** **** **** ----">
+        <div class="credit-card__wrapper">
+          <div class="wrapper">
+            <label for="credit-card__card-exp" class="credit-card__card-exp-label">Exp</label>
+            <input type="text" id="credit-card__card-exp" class="credit-card__card-exp" placeholder="-- / --">
+          </div>
+          <img src="assets/images/payment-systems/visa.svg" alt="Visa" class="icon--visa">
+        </div>
+      </div>
+
+      <div *ngIf="source$ | async as card" class="credit-card credit-card--active">
+        <input type="text" readonly class="credit-card__card-number" placeholder="**** **** **** ----"
+          [value]="card.last4">
+        <div class="credit-card__wrapper">
+          <div class="wrapper">
+            <label for="credit-card__card-exp" class="credit-card__card-exp-label">Exp</label>
+            <input type="text" readonly id="credit-card__card-exp" class="credit-card__card-exp" placeholder="-- / --"
+              value="{{card.exp_month}} / {{card.exp_year.toString() | slice:2:4}}">
+          </div>
+          <img src="assets/images/payment-systems/{{card.logo}}" alt="{{card.brand}}" class="icon--visa">
+        </div>
+      </div>
+    </li>
+
+    <li class="col col--profile-card-text">
+      <p [style.visibility]="(source$ | async) ? 'hidden' : 'visible'" class="profile-card__text">Purchase a subscription to add a card</p>
+    </li>
+  </ul>
+</section>
+
+
+
+<!--     <div class="profile-card profile-card--payment-method">
+  <div class="profile-card__header">
+    <h2 class="profile-card__title">Payment Method</h2>
+    <button class="button button--black button--profile-payment-method" data-row="3">Change</button>
+  </div>
+  <div class="credit-card">
+    <input type="text" class="credit-card__card-number" value="**** **** **** 8350" disabled>
+    <div class="credit-card__wrapper">
+      <div class="wrapper">
+        <label for="credit-card__card-exp" class="credit-card__card-exp-label">Exp</label>
+        <input type="text" id="credit-card__card-exp" class="credit-card__card-exp" value="11/23" disabled>
+      </div>
+      {{ icon(name="visa", class="icon--visa") }}
+    </div>
+  </div>
+</div>-->
+
+<app-payment-history class="profile-card profile-card--payment-history"></app-payment-history>

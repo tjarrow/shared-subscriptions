@@ -1,0 +1,36 @@
+{% extends "./templates/layout/_base.html" %}
+
+{% from "templates/components/_icon.html" import icon %}
+{% from "templates/components/_plan-card.html" import planCard %}
+
+{% block page_title %}
+		My subscriptions
+{% endblock %}
+
+{% block page_header %}
+	{{ header(isWhite=true, haveUserMenu="true") }}
+{% endblock %}
+
+{% set pageClass='page--market pb-0' %}
+
+{% block page_content %}
+  <section class="section section--market section--market6">
+    <div class="container">
+      <h1 class="page__header page__header--with-button">
+        <span class="return">
+          <a href="market.html" class="return__link">{{ icon(name='return') }}</a>
+          My Subscriptions
+        </span>
+        <a href="#" class="button button--blue button--add-subscription">Add New</a>
+      </h1>
+    </div>
+  </section>
+  <section class="section section--ellipse section--ellipse-with-image">
+    <div class="container">
+      <img src="images/market/tablets.svg" alt="" class="section__image">
+      <h2 class="section__header">You have not any subscriptions yet.</h2>
+      <p class="section__description">Share your subscriptions among our friendly community or subscribe</p>
+      <a href="index.html" class="button button--black button--get-support">Let’s go!</a>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,30 @@
+﻿@import 'vars/base';
+
+@import 'utils/fonts';
+@import 'utils/app';
+@import 'utils/normalize';
+@import 'utils/reboot';
+@import 'utils/animations';
+@import 'utils/helpers';
+@import 'vendor/grecaptcha-badge';
+
+// common bem blocks
+@import 'components/body';
+@import 'components/page';
+@import 'components/section';
+@import 'components/container';
+@import 'components/row';
+@import 'components/col';
+@import 'components/icon';
+@import 'components/logo';
+@import 'components/button';
+@import 'components/alert';
+@import 'components/separator';
+@import 'components/brand-button';
+@import 'components/modal';
+@import 'components/user-avatar';
+@import 'components/profile-card';
+@import 'components/return-link';
+@import 'components/subscription-card';
+@import 'components/counter';
+@import 'components/price';

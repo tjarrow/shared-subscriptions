@@ -1,0 +1,82 @@
+:host {
+  display: inline-block;
+
+  ::ng-deep {
+    .svg-icon,
+    svg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    .svg-icon {
+
+      &__glass {
+        fill: #BFECFF;
+      }
+
+      &__roof-tile {
+        &--light {
+          fill: #fff;
+        }
+
+        &--dark {
+          fill: #E34953;
+        }
+      }
+
+      &__contour {
+        fill: #353C41;
+      }
+
+      &__glass-blick {
+        fill: #fff;
+      }
+
+      &__background {
+        fill: #fff;
+
+        &--blue {
+          fill: #E9FAFC;
+        }
+
+        &--red {
+          fill: #FCE9EA;
+        }
+      }
+
+      &__star {
+        fill: #FFC813;
+      }
+
+      &__credit-card {
+        fill: #FFC813;
+      }
+
+      &__user {
+        fill: #30B3EA;
+      }
+
+      &__warm-back {
+        fill: #FFE9A1;
+      }
+
+      &__brush {
+        &--light {
+          fill: #fff;
+        }
+
+        &--blue {
+          fill: #ACE1F7;
+        }
+
+        &--orange {
+          fill: #FE9200;
+        }
+      }
+    }
+  }
+}

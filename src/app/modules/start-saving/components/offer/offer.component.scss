@@ -1,0 +1,57 @@
+@import 'styles/vars/base';
+
+.offer {
+  position: relative;
+  display: block;
+  padding: 20px 26px 32px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(#000, .02);
+  color: $color-black;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .2s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
+  &__counter { // .plan-card__counter
+    position: absolute;
+    top: 16px;
+    right: 11px;
+  }
+
+  &__user-photo { // .plan-card__user-photo
+    width: 54px;
+    height: 54px;
+    margin-right: 0;
+    margin-bottom: 11px;
+    border-radius: 50%;
+    display: inline-flex;
+  }
+
+  &__user-name { // .plan-card__user-name
+    margin-bottom: 9px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4A5054;
+  }
+
+  &__logo-wrapper { // .plan-card__logo-wrapper
+    margin-bottom: 9px;
+  }
+
+  &__logo { // .plan-card__logo
+    max-width: 100%;
+  }
+
+  &__plan-type { // .plan-card__plan-type
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+}

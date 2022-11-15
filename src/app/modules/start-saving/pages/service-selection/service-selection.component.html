@@ -1,0 +1,51 @@
+<section class="section section--market service-selection">
+  <div class="container">
+    <h1 class="page__header page__header--market">
+      <span class="return-link">
+        <a routerLink="/market" class="return-link__link" title="">
+          <svg-icon name="round-left"></svg-icon>
+        </a>
+        Which service would you like to
+        <ng-container *ngIf="currentRole === userRole.share"><span class="text-red">share</span></ng-container>
+        <ng-container *ngIf="currentRole === userRole.subscribe"><span class="text-green">subscribe</span> to</ng-container>?
+      </span>
+    </h1>
+
+    <app-spinner [isShown]="(isLoading$ | async)" [isAbsolute]="true"></app-spinner>
+
+    <ul class="row row--market2" *ngIf="services && services.length" [@inOutAnimation]>
+      <ng-container *ngIf="currentRole === userRole.share">
+        <li class="col col--market2" *ngFor="let service of services">
+          <a [routerLink]="service.name | lowercase | snakeCase" class="market-service" title="">
+            <img class="market-service__img" src="{{getServiceImg(service)}}"
+              [alt]="service.name">
+          </a>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="currentRole === userRole.subscribe">
+        <li class="col col--market5" *ngFor="let service of services">
+          <a [routerLink]="service.name | lowercase | snakeCase" class="market-service market-service--with-price">
+            <img class="market-service__img" src="{{getServiceImg(service)}}"
+                [alt]="service.name">
+            <div class="price">
+              <p class="price__title">Price from:</p>
+              <div class="price__wrapper">
+                <span class="price__small">S<span class="price__dollar">$</span></span>
+                {{ service | subscriptionPrice }}
+                <span class="price__small">/mo
+              </span></div>
+            </div>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>
+
+<app-support-section *ngIf="currentRole === userRole.share">
+</app-support-section>
+
+<app-support-section *ngIf="currentRole === userRole.subscribe"
+    description="Let us know!">
+</app-support-section>

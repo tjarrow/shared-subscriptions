@@ -1,0 +1,36 @@
+<a [routerLink]="offer.id" class="offer">
+  <p class="counter counter--offer offer__counter">
+    <span class="counter__number counter__number--offer">{{ offer.freeSlotsCount }}</span>
+    <span class="counter__separator">/</span>
+    <span class="counter__total"><span class="counter__total-words">slots<br>left</span></span>
+  </p>
+
+  <i *ngIf="offer.owner.userAvatarId; else avatarPlaceholder"
+    [ngStyle]="{'background-image': 'url(' + apiUrl + '/users/logo/' + offer.owner.userAvatarId + ')'}"
+    class="user-avatar offer__user-photo" title="{{ offer.owner.firstName }} {{ offer.owner.lastName }}">
+  </i>
+
+  <ng-template #avatarPlaceholder>
+    <span class="user-avatar user-avatar--no-photo offer__user-photo">
+      {{ offer.owner.firstName[0] }}{{ offer.owner.lastName[0] }}
+    </span>
+  </ng-template>
+
+  <p class="offer__user-name">{{ offer.owner.firstName }} {{ offer.owner.lastName[0] | uppercase }}</p>
+
+  <div class="offer__logo-wrapper">
+    <img src="assets/images/services/{{ serviceName | lowercase }}.svg" alt="" class="offer__logo">
+  </div>
+
+  <p class="offer__plan-type">{{ offer.plan.name }}</p>
+
+
+  <div class="price price--small offer__price">
+    <p class="price__title">Price</p>
+    <div class="price__wrapper">
+      <span class="price__small">S<span class="price__dollar">$</span></span>
+      {{ offer.plan.buyerCostPrice / 100 }}
+      <small class="price__small">/ mo</small>
+    </div>
+  </div>
+</a>

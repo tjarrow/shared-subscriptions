@@ -1,0 +1,122 @@
+.footer {
+  position: relative;
+  z-index: 10;
+  margin-top: -84px;
+  padding-top: 84px;
+  color: #fff;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 101%;
+    min-width: 600px;
+    height: 84px;
+    background-image: url('../../../../../assets/images/footer_subtract.svg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    content: '';
+    transform: translateX(-50%);
+  }
+
+  &__top { // .footer__top
+    padding-top: 42px;
+    padding-bottom: 24px;
+    background-color: $color-black;
+
+    @include respond-to(md) {
+      padding-top: 30px;
+      padding-bottom: 39px;
+    }
+  }
+
+  &__addr { // .footer__addr
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  &__phone { // .footer__phone
+    font-size: 16px;
+    line-height: 28px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-yellow;
+    }
+  }
+
+  &__nav-block { // .footer__nav-block
+    margin-bottom: 38px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include respond-to(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__category { // .footer__category
+    margin-bottom: 21px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &__nav-elem { // .footer__nav-elem
+    margin-bottom: 26px;
+  }
+
+  &__nav-link { // .footer__nav-link
+    color: $color-yellow;
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      outline: 0;
+    }
+
+    &--active {
+      color: #fff;
+      pointer-events: none;
+    }
+  }
+
+  &__bottom { // .footer__bottom
+    padding-top: 22px;
+    padding-bottom: 22px;
+    background-color: #252a2e;
+  }
+
+  &__copyright { // .footer__copyright
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    @include respond-to(md) {
+      text-align: left;
+    }
+  }
+
+  &__copyright-br { // .footer__copyright-br
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+
+  &__list { // .footer__list
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}

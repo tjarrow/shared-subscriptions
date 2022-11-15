@@ -1,0 +1,139 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -14px;
+
+  &--hero { // .row--hero
+    flex-direction: column-reverse;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &--advantages { // .row--advantages
+    flex-direction: column;
+    align-items: center;
+    padding: 0 25px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &--form { // .row--form
+    margin: 0 -10px;
+  }
+
+  &--market { // .row--market
+    justify-content: center;
+    margin: 0 -15px;
+  }
+
+  &--market2 { // .row--market2
+    justify-content: center;
+    margin: 0 -10px;
+
+    @include respond-to(md) {
+      margin: 0 -15px;
+    }
+
+    @include respond-to(lg) {
+      padding: 0 70px;
+    }
+  }
+
+  &--market3 { // .row--market3
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 -15px;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &--market4 { // .row--market4
+    justify-content: center;
+  }
+
+  &--market5 { // .row--market5
+    justify-content: center;
+    margin: 0 -12px;
+
+    @include respond-to(md) {
+      margin: 0 -15px;
+    }
+
+    @include respond-to(lg) {
+      padding: 0 70px;
+    }
+  }
+
+  &--market6 { // .row--market6
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 550px) {
+      flex-direction: row;
+      align-items: flex-start;
+      margin: 0 auto;
+      max-width: 480px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 800px) {
+      max-width: 720px;
+    }
+
+    @media (min-width: 1160px) {
+      max-width: 960px;
+    }
+
+    @media (min-width: 1400px) {
+      max-width: 1200px;
+    }
+  }
+
+  &--market8 { // .row--market8
+    justify-content: center;
+  }
+
+  &--subscribtions { // .row--subscribtions
+    flex-direction: column;
+    align-items: center;
+    margin: 0 -10px;
+
+    @media (min-width: 700px) {
+      flex-direction: row;
+      align-items: flex-start;
+      margin: 0 auto;
+      max-width: 632px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 1100px) {
+      max-width:948px;
+    }
+
+    @media (min-width: 1350px) {
+      max-width: unset;
+      margin: 0 -10px;
+    }
+  }
+
+  &--user-card { // .row--user-card
+    flex-direction: column-reverse;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      max-width: unset;
+      margin: 0 -10px;
+    }
+  }
+}

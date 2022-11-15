@@ -1,0 +1,259 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10010;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#122335, 0);
+  overflow-x: hidden;
+  transition: background-color 0.2s;
+  -webkit-overflow-scrolling: touch;
+
+  &--show { // .modal--show
+    display: flex;
+  }
+
+  &--backdrop { // .modal--backdrop
+    background-color: rgba(#122335, 0.64);
+  }
+
+  &--successfully-placed { // .modal--successfully-placed
+    color: #59595C
+  }
+
+  &--cancel-subscription { // .modal--cancel-subscription
+    text-align: center;
+  }
+
+  &--delete-profile-image { // .modal--delete-profile-image
+    text-align: center;
+  }
+
+  &--chat { // .modal--chat
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    width: 353px;
+    max-width: calc(100vw - 60px);
+    height: auto;
+    overflow: visible;
+  }
+
+  &__card { // .modal__card
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    max-width: 408px;
+    margin: 40px 0 80px;
+    background-color: #fff;
+    box-shadow: 0px 3px 24px rgba(0, 0, 0, .3);
+    border-radius: 12px;
+    transition: transform 0.3s ease-in-out, opacity 0.7s ease;
+    opacity: 0;
+    transform: perspective(600px) translateY(350px) rotateX(-45deg) scale(0.7);
+    transform-origin: 50% 0;
+    overflow: hidden;
+
+    .modal--shown & {
+      opacity: 1;
+      transform: perspective(600px) translateY(0) rotateX(0) scale(1);
+    }
+
+    .modal--chat & {
+      top: auto;
+      bottom: 0;
+      margin: 0;
+    }
+  }
+
+  &__header { // .modal__header
+    position: relative;
+    padding: 16px 50px;
+    background-color: $color-black;
+
+    .modal--chat & {
+      padding-left: 28px;
+    }
+  }
+
+  &__title { // .modal_title
+    margin-bottom: 0;
+    font-size: 22px;
+    line-height: 38px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    text-align: center;
+    color: #fff;
+
+    @include respond-to(md) {
+      font-size: 24px;
+    }
+
+    .modal--chat & {
+      font-size: 18px;
+      font-weight: 500;
+      text-align: left;
+      letter-spacing: 0;
+
+      @include respond-to(md) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__close { // .modal__close
+    position: absolute;
+    top: 21px;
+    right: 16px;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    padding: 2px;
+    background-color: $color-transparent;
+    border-width: 0;
+    color: #9A9DA0;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-yellow;
+    }
+  }
+
+  &__body { // .modal__body
+    padding: 30px 20px 16px;
+
+    .modal--successfully-placed & {
+      padding-top: 49px;
+      text-align: center;
+    }
+
+    .modal--cancel-subscription &{
+      padding-top: 25px;
+      padding-bottom: 40px;
+    }
+
+    .modal--delete-profile-image &,
+    .modal--change-password &,
+    .modal--edit-user-information &  {
+      padding-top: 35px;
+      padding-bottom: 37px;
+    }
+
+    .modal--chat & {
+      padding-top: 22px;
+      padding-bottom: 40px;
+
+      @include respond-to(md) {
+        padding-bottom: 24px;
+      }
+    }
+  }
+
+  &__wrapper { // .modal__wrapper
+
+    &--brand-buttons { // .modal__wrapper--brand-buttons
+      margin-bottom: 23px;
+    }
+
+    &--remember { // .modal__wrapper--remember
+      margin-bottom: 26px;
+      padding-top: 4px;
+      padding-right: 13px;
+      text-align: center;
+    }
+
+    &--two-buttons { // .modal__wrapper--two-buttons
+      display: flex;
+      justify-content: space-between;
+
+      .modal--edit-user-information &,
+      .modal--change-password & {
+        padding-top: 34px;
+      }
+    }
+
+    .modal--successfully-placed & {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__text { // .modal__text
+    margin-bottom: 28px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    text-align: center;
+
+    &--forgot-password { // .modal__text--forgot-password
+      text-align: center;
+    }
+
+    .modal--successfully-placed & {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 500;
+
+      @include respond-to(md) {
+        margin-bottom: 6px;
+        font-size: 18px;
+      }
+    }
+
+    .modal--cancel-subscription &,
+    .modal--delete-profile-image & {
+      margin-bottom: 27px;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    &--big { // .modal__text--big
+      .modal--successfully-placed & {
+        margin-bottom: 6px;
+        font-size: 28px;
+        line-height: 1.4;
+        font-weight: 500;
+
+        @include respond-to(md) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+
+  &__link { // .modal__link
+    color: $color-blue;
+    text-decoration: underline;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__icon { // .modal__icon
+    margin-top: 10px;
+    margin-bottom: 9px;
+  }
+
+  &__successfully-placed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: #22A199;
+    box-shadow: 0 0 0 10px #D3ECEB;
+    color: #fff;
+  }
+}

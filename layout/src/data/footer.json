@@ -1,0 +1,59 @@
+{
+	"footer_menu": [
+		{
+			"category": "Navigation",
+			"list": [
+				{
+					"text": "Market",
+					"link": "index.html"
+				},
+				{
+					"text": "Sign In",
+					"link": "index.html"
+				},
+				{
+					"text": "Registration",
+					"link": "index.html"
+				}
+			]
+		},
+		{
+			"category": "Resources",
+			"list": [
+				{
+					"text": "FAQ",
+					"link": "index.html"
+				},
+				{
+					"text": "Pricing",
+					"link": "index.html"
+				},
+				{
+					"text": "Our Blog",
+					"link": "index.html"
+				}
+			]
+		},
+		{
+			"category": "Support",
+			"list": [
+				{
+					"text": "Terms and Conditions",
+					"link": "index.html"
+				},
+				{
+					"text": "Privacy Policy",
+					"link": "index.html"
+				},
+				{
+					"text": "Cookie Settings",
+					"link": "index.html"
+				},
+				{
+					"text": "Get Support",
+					"link": "index.html"
+				}
+			]
+		}
+	]
+}

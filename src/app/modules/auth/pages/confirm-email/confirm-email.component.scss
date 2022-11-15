@@ -1,0 +1,14 @@
+:host {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-email {
+  &__loader {
+    width: 44px;
+    height: 44px;
+    animation: rotate 1s linear infinite;
+  }
+}

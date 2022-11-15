@@ -1,0 +1,111 @@
+<section class="subscription-card subscription-card--xl">
+  <div class="subscription-card__decor-box">
+    <span class="subscription-card__decor"></span>
+  </div>
+
+  <p class="counter subscription-card__counter-top" [ngClass]="{'subscription-card__counter-top--market': !!owner}">
+    <span class="counter__number">{{ quantity }}</span>
+    <span class="counter__separator">/</span>
+    <!-- freeSlotsCount -->
+    <span class="counter__total counter__total--big-card">{{ maxSlotsQuant }}<span
+        *ngIf="owner" class="counter__total-words counter__total-words--small">slots<br>left</span></span>
+  </p>
+
+  <div *ngIf="!service.logo" class="subscription-card__logo-wrapper">
+    <img src="{{imageSrc}}" alt="{{ service.name }}" class="subscription-card__logo" [ngClass]="{'subscription-card__logo--right-assimetric': service.name === serviceName.Spotify}">
+  </div>
+  <div *ngIf="!!service.logo" class="subscription-card__logo-wrapper subscription-card__custom-logo" style="background-image: url({{imageSrc}}) !important"></div>
+
+  <h2 class="subscription-card__type" [ngClass]="{'subscription-card__type--market': !!owner}">{{ plan.name }}</h2>
+
+  <p class="subscription-card__form-description" *ngIf="!owner">
+    Number of available slots on your account. Not counting yourself.
+  </p>
+
+  <p class="subscription-card__form-description subscription-card__form-description--market" *ngIf="!!owner">
+    <ng-container *ngIf="serviceDescription; else planDescription">
+      {{ serviceDescription }}
+    </ng-container>
+    <ng-template #planDescription>
+      {{ plan.description }}
+    </ng-template>
+  </p>
+
+  <ng-container *ngIf="owner">
+    <div class="subscription-card__owner">
+      <i *ngIf="owner.userAvatarId; else avatarPlaceholder"
+        [ngStyle]="{'background-image': 'url(' + apiUrl + '/users/logo/' + owner.userAvatarId + ')'}"
+        class="user-avatar subscription-card__owner-photo" title="{{ owner.firstName }} {{ owner.lastName[0] }}">
+      </i>
+
+      <ng-template #avatarPlaceholder>
+        <span class="user-avatar user-avatar--no-photo user-avatar--xs subscription-card__owner-photo">
+          {{ owner.firstName[0] }}{{ owner.lastName[0] }}
+        </span>
+      </ng-template>
+
+      {{ owner.firstName }} {{ owner.lastName[0] }}
+    </div>
+  </ng-container>
+
+  <form (submit)="handleFormSubmit($event)" >
+    <div class="quantity subscription-card__quantity">
+      <button class="quantity__button" type="button"
+          [attr.disabled]="control.value<2 || isLoading ? 'disabled': null" (click)="handleMinusClick()">
+        <svg-icon name="round-minus" class="icon"></svg-icon>
+      </button>
+      <input #input type="number" min="1" inputmode="numeric" pattern="[0-9]*" class="quantity__input"
+          [formControl]="control" [attr.disabled]="isLoading ? 'disabled': null"
+          (focus)="$event.target.select();"
+          (keydown)="checkNumber($event)"
+          (keyup)="handleKeyUp()">
+      <button class="quantity__button" type="button"
+          [attr.disabled]="(!!owner  &&  control.value >= maxSlotsQuant) || (!owner && control.value >= maxSlotsQuant-1) || isLoading ? 'disabled': null"
+          (click)="handlePlusClick()">
+        <svg-icon name="round-plus" class="icon"></svg-icon>
+      </button>
+    </div>
+
+    <p class="subscription-card__error-box">{{ errorMessage }}</p>
+
+    <div *ngIf="isOffer" class="price price--small subscription-card__price">
+      <p class="price__title">Save</p>
+      <p class="price__wrapper">
+        <span class="price__small">S<span class="price__dollar">$</span></span>
+        {{ totalPrice | number: '1.2-2' }}
+        <span class="price__small">/ mo
+        </span>
+      </p>
+    </div>
+
+    <div *ngIf="!isOffer" class="price price--small subscription-card__price">
+      <p class="price__title">Subscription Price</p>
+      <p class="price__wrapper">
+        <span class="price__small">S<span class="price__dollar">$</span></span>
+        {{ totalPrice | number: '1.2-2' }}
+        <span class="price__small">/ mo
+        </span>
+      </p>
+    </div>
+
+    <div class="subscription-card__content">
+      <app-checkbox-control *ngIf="termsControl" class="subscription-card__checkbox"
+          [control]="termsControl" [isErrored]="isReadTermsConfirmed">
+        I have read the
+        <ng-container *ngIf="terms; else noTerms">
+          <a [href]="terms.url" [title]="terms.title" target="_blank" rel="nofollow">{{ terms.name }}</a>
+        </ng-container>
+        <ng-template #noTerms>service Terms & Conditions</ng-template>
+      </app-checkbox-control>
+      <button class="button button--black button--submit-slot" [ngClass]="{'button--loading': isLoading}"
+          [attr.disabled]="isSubmitDisabled ? 'disabled' : null" type="submit">
+          <ng-container *ngIf="isOffer">
+            Submit
+          </ng-container>
+          <ng-container *ngIf="!isOffer">
+            Subscribe & Pay
+          </ng-container>
+        </button>
+    </div>
+  </form>
+</section>

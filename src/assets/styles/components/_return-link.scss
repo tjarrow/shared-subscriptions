@@ -1,0 +1,30 @@
+.return-link {
+  position: relative;
+  padding-left: 36px;
+
+  @include respond-to(md) {
+    padding-left: 60px;
+  }
+
+  &__link { // .return __link
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    color: $color-black;
+    transition: color 0.2s;
+
+    @include respond-to(md) {
+      top: 4px;
+      width: 35px;
+      height: 35px;
+    }
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
